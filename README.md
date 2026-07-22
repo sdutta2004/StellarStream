@@ -5,13 +5,23 @@
 ![StellarStream Banner](https://img.shields.io/badge/StellarStream-Real--Time%20XLM%20Streaming-00F0FF?style=for-the-badge&logo=stellar&logoColor=white)
 ![Soroban](https://img.shields.io/badge/Soroban-Smart%20Contracts-9D00FF?style=for-the-badge)
 ![Network](https://img.shields.io/badge/Network-Stellar%20Testnet-00F0FF?style=for-the-badge)
+![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-00F0FF?style=for-the-badge&logo=vercel&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-white?style=for-the-badge)
 
 **Stream XLM salaries per second. Vest funds on-chain. Earn STRM tokens. No intermediaries.**
 
-[View Active Streams](https://github.com/sdutta2004/StellarStream) · [Stellar Expert](https://stellar.expert/explorer/testnet) · [Report Bug](https://github.com/sdutta2004/StellarStream/issues)
+[🌐 Live Vercel App](https://stellar-stream.vercel.app) · [📹 Live Demo Video](https://youtu.be/your-demo-video) · [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ) · [GitHub Repo](https://github.com/sdutta2004/StellarStream)
 
 </div>
+
+---
+
+## 🔗 Live Links & Demo
+
+- 🌐 **Live Vercel Application**: [https://stellar-stream.vercel.app](https://stellar-stream.vercel.app)
+- 📹 **Live Video Demo**: [Watch Walkthrough Video](https://youtu.be/your-demo-video) *(Replace with your video link)*
+- 📜 **StellarStream Smart Contract**: [`CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ`](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ)
+- 🪙 **STRM Token Contract**: [`CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M`](https://stellar.expert/explorer/testnet/contract/CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M)
 
 ---
 
