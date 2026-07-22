@@ -10,7 +10,7 @@
 
 **Stream XLM salaries per second. Vest funds on-chain. Earn STRM tokens. No intermediaries.**
 
-[🌐 Live Vercel App](https://stellar-stream-nu.vercel.app) · [📹 Live Demo Video](https://youtu.be/your-demo-video) · [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ) · [GitHub Repo](https://github.com/sdutta2004/StellarStream)
+[🌐 Live Vercel App](https://stellar-stream-nu.vercel.app) · [📹 Live Demo Video](https://drive.google.com/file/d/1Z6L-9ga8u8tqQN98OytDxwILqWIn_iHf/view?usp=sharing) · [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ) · [GitHub Repo](https://github.com/sdutta2004/StellarStream)
 
 </div>
 
@@ -19,7 +19,7 @@
 ## 🔗 Live Links & Demo
 
 - 🌐 **Live Vercel Application**: [https://stellar-stream-nu.vercel.app](https://stellar-stream-nu.vercel.app)
-- 📹 **Live Video Demo**: [Watch Walkthrough Video](https://youtu.be/your-demo-video) *(Replace with your video link)*
+- 📹 **Live Video Demo**: [Watch Walkthrough Video](https://drive.google.com/file/d/1Z6L-9ga8u8tqQN98OytDxwILqWIn_iHf/view?usp=sharing)
 - 📜 **StellarStream Smart Contract**: [`CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ`](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ)
 - 🪙 **STRM Token Contract**: [`CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M`](https://stellar.expert/explorer/testnet/contract/CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M)
 
