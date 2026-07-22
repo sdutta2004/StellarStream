@@ -134,18 +134,20 @@ export function explorerTxUrl(hash: string, network: "testnet" | "mainnet" = "te
 }
 
 /** Get Stellar Expert explorer URL for an account */
-export function explorerAccountUrl(address: string, network: "testnet" | "mainnet" = "testnet"): string {
+export function explorerAccountUrl(address?: string, network: "testnet" | "mainnet" = "testnet"): string {
   const base = network === "mainnet"
     ? "https://stellar.expert/explorer/public"
     : "https://stellar.expert/explorer/testnet";
+  if (!address) return base;
   return `${base}/account/${address}`;
 }
 
 /** Get Stellar Expert explorer URL for a contract */
-export function explorerContractUrl(contractId: string, network: "testnet" | "mainnet" = "testnet"): string {
+export function explorerContractUrl(contractId?: string, network: "testnet" | "mainnet" = "testnet"): string {
   const base = network === "mainnet"
     ? "https://stellar.expert/explorer/public"
     : "https://stellar.expert/explorer/testnet";
+  if (!contractId) return base;
   return `${base}/contract/${contractId}`;
 }
 

@@ -16,9 +16,13 @@ export const STELLAR_CONFIG: StellarConfig = {
     process.env.NEXT_PUBLIC_HORIZON_URL ||
     "https://horizon-testnet.stellar.org",
   contractId:
-    process.env.NEXT_PUBLIC_CROWDFUND_CONTRACT_ID || "",
+    process.env.NEXT_PUBLIC_STREAM_CONTRACT_ID ||
+    process.env.NEXT_PUBLIC_CROWDFUND_CONTRACT_ID ||
+    "",
   rewardTokenId:
-    process.env.NEXT_PUBLIC_REWARD_TOKEN_CONTRACT_ID || "",
+    process.env.NEXT_PUBLIC_STRM_TOKEN_CONTRACT_ID ||
+    process.env.NEXT_PUBLIC_REWARD_TOKEN_CONTRACT_ID ||
+    "",
 };
 
 /** Testnet native XLM SAC address */

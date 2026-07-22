@@ -134,10 +134,10 @@ export function WalletConnect() {
                 </p>
               </div>
               <div>
-                <p className="text-[10px] uppercase font-bold tracking-wider text-secondary mb-0.5">GRNT Rewards</p>
+                <p className="text-[10px] uppercase font-bold tracking-wider text-secondary mb-0.5">STRM Rewards</p>
                 <p className="text-xl font-black gradient-text">
                   {rewardBalance !== null ? (rewardBalance / 10_000_000).toFixed(2) : "—"}{" "}
-                  <span className="text-xs font-normal text-muted-foreground font-sans">GRNT</span>
+                  <span className="text-xs font-normal text-muted-foreground font-sans">STRM</span>
                 </p>
               </div>
             </div>
@@ -145,7 +145,7 @@ export function WalletConnect() {
             {/* Actions */}
             <div className="px-2 py-2 space-y-1">
               <a
-                href={explorerContractUrl(STELLAR_CONFIG.contractId)}
+                href={address ? explorerAccountUrl(address) : explorerContractUrl(STELLAR_CONFIG.contractId)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-white/[0.05] transition-colors"
