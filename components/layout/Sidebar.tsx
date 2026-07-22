@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { cn, shortAddress } from "@/lib/utils";
 import { useWalletStore } from "@/store/wallet-store";
-import { STELLAR_CONFIG, DEPLOYER_ADDRESS } from "@/lib/stellar/config";
+import { STELLAR_CONFIG } from "@/lib/stellar/config";
 import { explorerContractUrl } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -28,15 +28,15 @@ export function Sidebar() {
   const { isConnected, address } = useWalletStore();
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 min-h-screen border-r border-white/[0.06] bg-gradient-to-b from-black/50 to-black/30 backdrop-blur-xl fixed left-0 top-0 z-30">
+    <aside className="hidden lg:flex flex-col w-64 min-h-screen border-r border-slate-200 bg-white fixed left-0 top-0 z-30 shadow-sm">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-6 py-7 border-b border-white/[0.06]">
-        <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center flex-shrink-0 shadow-glow-stream">
+      <div className="flex items-center gap-3 px-6 py-6 border-b border-slate-100">
+        <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center flex-shrink-0 shadow-glow">
           <Zap className="w-5 h-5 text-white" />
         </div>
-        <div className="flex-1">
-          <h1 className="font-bold text-base text-foreground gradient-text">StellarStream</h1>
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: "hsl(270, 80%, 65%)" }}>Streaming Protocol</p>
+        <div className="flex-1 min-w-0">
+          <h1 className="font-bold text-base text-slate-900 gradient-text font-sans">StellarStream</h1>
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-indigo-600">Streaming Protocol</p>
         </div>
       </div>
 
@@ -53,14 +53,14 @@ export function Sidebar() {
               key={href}
               href={href}
               className={cn(
-                "nav-item group relative px-4 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-3",
+                "nav-item group relative px-4 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-3",
                 isActive
-                  ? "bg-primary/8 border border-primary/25 text-primary"
-                  : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
+                  ? "bg-blue-50/80 border border-blue-200 text-blue-700 font-semibold"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               )}
             >
-              <Icon className="w-4 h-4 flex-shrink-0" />
-              <span className="text-sm font-medium flex-1">{label}</span>
+              <Icon className={cn("w-4 h-4 flex-shrink-0", isActive ? "text-blue-600" : "text-slate-400 group-hover:text-slate-600")} />
+              <span className="text-sm flex-1">{label}</span>
               {isActive && (
                 <div className="flex items-center gap-2">
                   <div className="dot-active w-1.5 h-1.5" />
@@ -72,16 +72,16 @@ export function Sidebar() {
       </nav>
 
       {/* Bottom info */}
-      <div className="px-4 py-5 border-t border-white/[0.06] space-y-3">
+      <div className="px-4 py-5 border-t border-slate-100 space-y-3 bg-slate-50/50">
         {/* Network badge */}
-        <div className="flex items-center justify-between px-3 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.07] transition-colors">
+        <div className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center gap-2">
             <div className="dot-active" />
-            <span className="text-xs text-muted-foreground capitalize font-medium">
+            <span className="text-xs text-slate-700 capitalize font-semibold">
               {STELLAR_CONFIG.network}
             </span>
           </div>
-          <span className="text-[10px] font-mono font-semibold" style={{ color: "hsl(185, 100%, 60%)" }}>
+          <span className="text-[10px] font-mono font-bold text-blue-600">
             Fee: 0.0001 XLM
           </span>
         </div>
@@ -92,21 +92,21 @@ export function Sidebar() {
             href={explorerContractUrl(STELLAR_CONFIG.contractId)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.07] hover:border-primary/35 transition-all duration-200 group"
+            className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200 group"
           >
-            <div className="w-4 h-4 rounded bg-primary/20 flex items-center justify-center flex-shrink-0">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-125 transition-transform" />
+            <div className="w-4 h-4 rounded bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-600 group-hover:scale-125 transition-transform" />
             </div>
-            <span className="text-xs text-muted-foreground font-mono flex-1 truncate group-hover:text-primary/70 transition-colors">
+            <span className="text-xs text-slate-600 font-mono flex-1 truncate group-hover:text-blue-700 font-medium">
               {shortAddress(STELLAR_CONFIG.contractId, 4)}
             </span>
-            <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+            <ExternalLink className="w-3 h-3 text-slate-400 opacity-60 group-hover:opacity-100 transition-opacity" />
           </a>
         )}
 
         {/* STRM token label */}
-        <div className="px-3 py-2 rounded-lg text-center">
-          <span className="text-[10px] text-muted-foreground font-mono">STRM Protocol Token Active</span>
+        <div className="px-3 py-1.5 rounded-lg text-center">
+          <span className="text-[10px] text-slate-500 font-mono font-medium">STRM Protocol Token Active</span>
         </div>
       </div>
     </aside>

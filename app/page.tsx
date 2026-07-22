@@ -13,32 +13,32 @@ const BENEFITS = [
     title: "Real-Time Vesting Vaults",
     description:
       "Payment streams calculate vested XLM every second, on-chain. The recipient's balance ticks up in real time — trustless and fully automated by Soroban smart contracts.",
-    color: "text-primary",
-    bg: "bg-primary/10 border-primary/20",
+    color: "text-blue-600",
+    bg: "bg-blue-50 border-blue-200",
   },
   {
     icon: Zap,
     title: "Per-Second Settlements",
     description:
       "Stellar confirms streams in seconds. XLM flows continuously at the defined rate — no batches, no delays. Average fee under 0.001 XLM per transaction.",
-    color: "text-primary",
-    bg: "bg-primary/10 border-primary/20",
+    color: "text-indigo-600",
+    bg: "bg-indigo-50 border-indigo-200",
   },
   {
     icon: Coins,
     title: "STRM Reward Tokens",
     description:
       "Every 1 XLM streamed mints 1 STRM protocol token (1:1 ratio) via cross-contract call. Build verifiable on-chain streaming history for senders and recipients.",
-    color: "text-secondary",
-    bg: "bg-secondary/10 border-secondary/20",
+    color: "text-purple-600",
+    bg: "bg-purple-50 border-purple-200",
   },
   {
     icon: Cpu,
     title: "Cancelable & Non-Custodial",
     description:
       "Senders can cancel any stream at any time — unvested funds return instantly. No platform fees, no intermediaries. Fully self-sovereign payment streaming.",
-    color: "text-secondary",
-    bg: "bg-secondary/10 border-secondary/20",
+    color: "text-blue-600",
+    bg: "bg-blue-50 border-blue-200",
   },
 ];
 
@@ -52,18 +52,16 @@ const STATS = [
 export default function HomePage() {
   return (
     <div className="space-y-24 pb-20">
-      {/* ── Hero section — Electric Cyan / Deep Violet ─────────────────── */}
+      {/* ── Hero section — Modern Clean Light Mode ─────────────────── */}
       <section className="relative flex flex-col items-center text-center pt-12 pb-16 gap-8 overflow-hidden">
-        {/* Glow effects */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[450px] rounded-full bg-primary/8 blur-[120px] pointer-events-none" />
-        <div className="absolute top-40 left-1/4 w-[450px] h-[350px] rounded-full bg-secondary/8 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[300px] h-[250px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+        {/* Soft background glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[450px] rounded-full bg-blue-500/5 blur-[120px] pointer-events-none" />
+        <div className="absolute top-40 left-1/4 w-[450px] h-[350px] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
 
         {/* Live indicator badge */}
         <div
           id="hero-badge"
-          className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-sm font-semibold text-primary animate-fade-in backdrop-blur-sm"
-          style={{ boxShadow: "0 0 20px hsl(185 100% 50% / 0.12)" }}
+          className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-200 bg-blue-50/80 text-sm font-semibold text-blue-700 animate-fade-in shadow-sm"
         >
           <div className="dot-active" />
           Real-Time XLM Streaming on Stellar Soroban
@@ -71,12 +69,12 @@ export default function HomePage() {
 
         {/* Headline */}
         <div className="space-y-6 animate-fade-in max-w-5xl">
-          <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-[1.05] font-sans">
+          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.05] font-sans text-slate-900">
             Stream Salaries{" "}
             <br />
-            <span className="gradient-text font-black">Per Second, On-Chain</span>
+            <span className="gradient-text font-extrabold">Per Second, On-Chain</span>
           </h1>
-          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
             StellarStream is the next-generation protocol for real-time XLM payment streaming
             and salary vesting on Stellar. Set a flow rate, lock the vault, and watch XLM vest
             every second — trustless, instant, and non-custodial.
@@ -88,8 +86,7 @@ export default function HomePage() {
           <Link
             href="/campaigns"
             id="explore-streams-btn"
-            className="btn-stellar px-8 py-4 text-base font-bold"
-            style={{ boxShadow: "0 0 30px hsl(185 100% 50% / 0.35)" }}
+            className="btn-stellar px-8 py-4 text-base font-bold shadow-glow-stream"
           >
             <Radio className="w-5 h-5 relative z-10" />
             <span>View Active Streams</span>
@@ -100,12 +97,12 @@ export default function HomePage() {
             className="btn-ghost px-8 py-4 text-base font-semibold"
           >
             Access Dashboard
-            <ArrowRight className="w-4 h-4" style={{ color: "hsl(270, 100%, 65%)" }} />
+            <ArrowRight className="w-4 h-4 text-blue-600" />
           </Link>
         </div>
 
         {/* Network indicator */}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground animate-fade-in pt-4">
+        <div className="flex items-center gap-2 text-sm text-slate-500 font-medium animate-fade-in pt-4">
           <div className="dot-active" />
           Live on Stellar Soroban Testnet
         </div>
@@ -116,14 +113,14 @@ export default function HomePage() {
         {STATS.map(({ label, value, suffix }, i) => (
           <div
             key={label}
-            className="glass-card p-6 md:p-8 text-center animate-fade-in hover:border-primary/40 transition-all duration-300"
+            className="glass-card p-6 md:p-8 text-center animate-fade-in hover:border-blue-300 transition-all duration-300"
             style={{ animationDelay: `${i * 60}ms` }}
           >
-            <p className="text-3xl md:text-4xl font-black gradient-text">
+            <p className="text-3xl md:text-4xl font-extrabold gradient-text">
               {value}
               {suffix}
             </p>
-            <p className="text-xs md:text-sm text-muted-foreground mt-2 font-medium tracking-wide uppercase">
+            <p className="text-xs md:text-sm text-slate-500 mt-2 font-bold tracking-wide uppercase">
               {label}
             </p>
           </div>
@@ -133,10 +130,10 @@ export default function HomePage() {
       {/* ── Benefits ─────────────────────────────────────────────────────── */}
       <section className="space-y-12 max-w-6xl mx-auto">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
             The Future of Decentralized Payroll
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+          <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg font-medium">
             Built for engineers, DAOs, and enterprises who want real-time, verifiable, on-chain payment streams.
           </p>
         </div>
@@ -145,19 +142,19 @@ export default function HomePage() {
           {BENEFITS.map(({ icon: Icon, title, description, color, bg }, i) => (
             <div
               key={title}
-              className="glass-card p-6 md:p-8 flex gap-6 animate-fade-in hover:border-primary/40 hover:bg-primary/[0.02] transition-all duration-300 group"
+              className="glass-card p-6 md:p-8 flex gap-6 animate-fade-in hover:border-blue-300 transition-all duration-300 group"
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div
-                className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center flex-shrink-0 border ${bg} group-hover:scale-110 transition-transform duration-300`}
+                className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center flex-shrink-0 border ${bg} group-hover:scale-110 transition-transform duration-300 shadow-sm`}
               >
                 <Icon className={`w-6 h-6 md:w-7 md:h-7 ${color}`} />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {description}
                 </p>
               </div>
@@ -169,10 +166,10 @@ export default function HomePage() {
       {/* ── How It Works ─────────────────────────────────────────────────── */}
       <section className="space-y-12 max-w-6xl mx-auto">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
             How StellarStream Works
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg">
+          <p className="text-slate-600 text-base md:text-lg font-medium">
             Launch a payment stream in 3 steps — no intermediaries required
           </p>
         </div>
@@ -197,31 +194,27 @@ export default function HomePage() {
           ].map(({ step, title, desc }, i) => (
             <div
               key={step}
-              className="glass-card p-6 md:p-8 space-y-4 animate-fade-in hover:border-primary/40 transition-all duration-300"
+              className="glass-card p-6 md:p-8 space-y-4 animate-fade-in hover:border-blue-300 transition-all duration-300"
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-stellar-gradient flex items-center justify-center shadow-glow-stream">
-                <span className="font-black text-white text-sm md:text-base">{step}</span>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-stellar-gradient flex items-center justify-center shadow-md">
+                <span className="font-extrabold text-white text-sm md:text-base">{step}</span>
               </div>
-              <h3 className="font-bold text-lg">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <h3 className="font-bold text-lg text-slate-900">{title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── CTA Banner ────────────────────────────────────────────────────── */}
-      <section className="glass-card max-w-5xl mx-auto p-10 md:p-14 lg:p-16 text-center space-y-8 relative overflow-hidden group">
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-300"
-          style={{ background: "linear-gradient(135deg, hsl(185,100%,40%) 0%, hsl(270,100%,55%) 100%)" }}
-        />
-        <div className="absolute inset-x-0 top-0 h-px stream-bar" />
-        <h2 className="text-4xl md:text-5xl font-bold relative tracking-tight">
+      <section className="glass-card max-w-5xl mx-auto p-10 md:p-14 lg:p-16 text-center space-y-8 relative overflow-hidden group border border-blue-100 shadow-lg">
+        <div className="absolute inset-x-0 top-0 h-1 stream-bar" />
+        <h2 className="text-4xl md:text-5xl font-extrabold relative tracking-tight text-slate-900">
           Ready to{" "}
           <span className="gradient-text">Launch a Stream?</span>
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto relative text-base md:text-lg">
+        <p className="text-slate-600 max-w-2xl mx-auto relative text-base md:text-lg font-medium">
           Join the trustless payment streaming protocol on Stellar. Stream salaries, vest tokens,
           and build transparent payment rails — one second at a time.
         </p>
@@ -229,8 +222,7 @@ export default function HomePage() {
           <Link
             href="/campaigns"
             id="cta-launch-stream-btn"
-            className="btn-stellar px-8 py-3.5 text-base font-bold"
-            style={{ boxShadow: "0 0 25px hsl(185 100% 50% / 0.3)" }}
+            className="btn-stellar px-8 py-3.5 text-base font-bold shadow-glow-stream"
           >
             <Zap className="w-5 h-5 relative z-10" />
             <span>Launch a Payment Stream</span>

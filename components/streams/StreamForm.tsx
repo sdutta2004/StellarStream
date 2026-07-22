@@ -69,19 +69,19 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center flex-shrink-0 shadow-glow-stream">
+        <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center flex-shrink-0 shadow-md">
           <Zap className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h2 className="font-bold text-lg gradient-text">Create Payment Stream</h2>
-          <p className="text-xs text-muted-foreground">Launch a real-time XLM vesting stream on-chain</p>
+          <h2 className="font-bold text-lg text-slate-900 gradient-text">Create Payment Stream</h2>
+          <p className="text-xs text-slate-500 font-medium">Launch a real-time XLM vesting stream on-chain</p>
         </div>
       </div>
 
       {/* Stream Title */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-          <FileText className="w-3.5 h-3.5 text-primary" />
+        <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+          <FileText className="w-3.5 h-3.5 text-blue-600" />
           Stream Title
         </label>
         <input
@@ -98,8 +98,8 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Recipient Address */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-          <User className="w-3.5 h-3.5 text-primary" />
+        <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+          <User className="w-3.5 h-3.5 text-blue-600" />
           Recipient Address (Employee / Stream Recipient)
         </label>
         <input
@@ -115,10 +115,10 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Description */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-          <FileText className="w-3.5 h-3.5 text-muted-foreground" />
+        <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+          <FileText className="w-3.5 h-3.5 text-slate-400" />
           Description
-          <span className="text-muted-foreground text-xs font-normal">(optional)</span>
+          <span className="text-slate-400 text-xs font-normal">(optional)</span>
         </label>
         <textarea
           id="stream-description"
@@ -134,8 +134,8 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Total XLM Deposit */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-          <Coins className="w-3.5 h-3.5 text-primary" />
+        <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+          <Coins className="w-3.5 h-3.5 text-blue-600" />
           Total XLM Deposit (Stream Vault)
         </label>
         <div className="relative">
@@ -150,7 +150,7 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
             className="input-stellar pr-16"
             disabled={isLoading}
           />
-          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-mono font-semibold text-primary">
+          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-mono font-bold text-blue-600">
             XLM
           </span>
         </div>
@@ -158,8 +158,8 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Duration */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-2 text-sm font-medium text-foreground/80">
-          <Clock className="w-3.5 h-3.5 text-primary" />
+        <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+          <Clock className="w-3.5 h-3.5 text-blue-600" />
           Stream Duration
         </label>
         <div className="flex gap-2">
@@ -174,14 +174,14 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
             className="input-stellar flex-1"
             disabled={isLoading}
           />
-          <div className="flex rounded-lg border border-white/10 overflow-hidden flex-shrink-0">
+          <div className="flex rounded-xl border border-slate-200 overflow-hidden flex-shrink-0 bg-slate-50 p-1 gap-1">
             <button
               type="button"
               onClick={() => setDurationUnit("days")}
-              className={`px-4 py-2 text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                 durationUnit === "days"
-                  ? "bg-primary text-background"
-                  : "bg-white/[0.04] text-muted-foreground hover:text-foreground"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
               }`}
               disabled={isLoading}
             >
@@ -190,10 +190,10 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
             <button
               type="button"
               onClick={() => setDurationUnit("seconds")}
-              className={`px-4 py-2 text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                 durationUnit === "seconds"
-                  ? "bg-primary text-background"
-                  : "bg-white/[0.04] text-muted-foreground hover:text-foreground"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
               }`}
               disabled={isLoading}
             >
@@ -205,31 +205,31 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Live flow rate preview */}
       {flowRateXLMPerSec > 0 && (
-        <div className="glass-card p-4 space-y-3 border border-primary/20">
+        <div className="glass-card p-4 space-y-3 border border-blue-200 bg-blue-50/50">
           <div className="stream-bar" />
-          <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Stream Preview</p>
+          <p className="text-xs text-blue-800 font-bold uppercase tracking-wider">Stream Preview</p>
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
-              <p className="text-xs text-muted-foreground">Flow Rate</p>
+              <p className="text-xs text-slate-500 font-medium">Flow Rate</p>
               <p className="font-mono font-bold stream-counter">
                 {flowRateXLMPerSec.toFixed(7)} XLM/sec
               </p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Duration</p>
-              <p className="font-mono font-semibold text-foreground">
+              <p className="text-xs text-slate-500 font-medium">Duration</p>
+              <p className="font-mono font-semibold text-slate-900">
                 {durationUnit === "days"
                   ? `${duration} days`
                   : `${(durationSeconds / 86400).toFixed(2)} days`}
               </p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Total Vault</p>
-              <p className="font-mono font-bold text-primary">{parseFloat(totalXLM).toFixed(4)} XLM</p>
+              <p className="text-xs text-slate-500 font-medium">Total Vault</p>
+              <p className="font-mono font-bold text-blue-600">{parseFloat(totalXLM).toFixed(4)} XLM</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">STRM Minted</p>
-              <p className="font-mono font-semibold text-foreground">
+              <p className="text-xs text-slate-500 font-medium">STRM Minted</p>
+              <p className="font-mono font-semibold text-slate-900">
                 {(parseFloat(totalXLM) * 10_000_000).toLocaleString()} STRM
               </p>
             </div>
@@ -239,8 +239,8 @@ export function StreamForm({ onSubmit, isLoading = false }: StreamFormProps) {
 
       {/* Error */}
       {error && (
-        <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-400">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+        <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
+          <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-500" />
           {error}
         </div>
       )}

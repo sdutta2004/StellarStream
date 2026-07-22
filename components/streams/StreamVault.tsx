@@ -72,12 +72,12 @@ export function StreamVault({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center shadow-glow-stream">
+          <div className="w-10 h-10 rounded-xl bg-stellar-gradient flex items-center justify-center shadow-md">
             <Radio className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="font-bold text-base gradient-text">Stream Vault</h3>
-            <p className="text-xs text-muted-foreground">Stream #{streamId}</p>
+            <h3 className="font-bold text-base text-slate-900 gradient-text">Stream Vault</h3>
+            <p className="text-xs text-slate-500 font-medium">Stream #{streamId}</p>
           </div>
         </div>
         {isLive && (
@@ -92,15 +92,15 @@ export function StreamVault({
       {isLive && <div className="stream-bar" />}
 
       {/* Live vested counter */}
-      <div className="glass-card p-5 border border-primary/20 space-y-4">
+      <div className="glass-card p-5 border border-blue-200 bg-blue-50/30 space-y-4">
         <div className="text-center space-y-1">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+          <p className="text-xs text-slate-500 uppercase tracking-wider font-bold">
             Vested XLM Available
           </p>
-          <p className={`text-4xl font-black font-mono ${isLive ? "stream-counter" : "text-foreground"}`}>
+          <p className={`text-4xl font-extrabold font-mono ${isLive ? "stream-counter" : "text-slate-900"}`}>
             {formatXLM(vestedNow)}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-slate-500 font-medium">
             of {formatXLM(totalVault)} XLM total vault
           </p>
         </div>
@@ -110,7 +110,7 @@ export function StreamVault({
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${progress}%` }} />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="flex justify-between text-xs text-slate-500 font-medium">
             <span>{progress.toFixed(2)}% vested</span>
             <span>{formatXLM(unvested)} XLM unvested</span>
           </div>
@@ -119,20 +119,20 @@ export function StreamVault({
 
       {/* Stream rate & stats */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="glass-card p-3 text-center space-y-1 border border-white/[0.04]">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Flow Rate</p>
+        <div className="glass-card p-3.5 text-center space-y-1 border border-slate-200 bg-white">
+          <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Flow Rate</p>
           {isLive ? (
             <p className="text-sm font-mono font-bold stream-counter">
               {flowRateXLM.toFixed(6)}
-              <span className="text-xs font-normal text-muted-foreground"> XLM/sec</span>
+              <span className="text-xs font-normal text-slate-500"> XLM/sec</span>
             </p>
           ) : (
-            <p className="text-sm font-mono text-muted-foreground">—</p>
+            <p className="text-sm font-mono text-slate-400">—</p>
           )}
         </div>
-        <div className="glass-card p-3 text-center space-y-1 border border-white/[0.04]">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">STRM Earned</p>
-          <p className="text-sm font-mono font-bold text-foreground">
+        <div className="glass-card p-3.5 text-center space-y-1 border border-slate-200 bg-white">
+          <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">STRM Earned</p>
+          <p className="text-sm font-mono font-bold text-slate-900">
             {Math.floor(vestedNow).toLocaleString()}
           </p>
         </div>
@@ -161,17 +161,17 @@ export function StreamVault({
             id={`stream-cancel-${streamId}`}
             onClick={() => onCancel?.(streamId)}
             disabled={isLoading || status === "Withdrawn"}
-            className="btn-ghost w-full py-3 justify-center border-red-500/20 text-red-400/80 hover:border-red-500/40 hover:text-red-400"
+            className="btn-ghost w-full py-3 justify-center border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300"
           >
-            <XCircle className="w-4 h-4" />
+            <XCircle className="w-4 h-4 text-red-500" />
             Cancel Stream & Refund Unvested
           </button>
         )}
       </div>
 
       {/* Info note */}
-      <div className="flex items-start gap-2 text-xs text-muted-foreground p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-        <AlertCircle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-primary/60" />
+      <div className="flex items-start gap-2 text-xs text-slate-600 p-3 rounded-xl bg-slate-50 border border-slate-200 font-medium">
+        <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-blue-600" />
         <span>
           {isCreator
             ? "As stream sender, you can withdraw fully vested funds once the vault goal is reached."

@@ -22,15 +22,18 @@ import {
   shortAddress,
   formatXlm,
 } from "@/lib/utils";
-import { STELLAR_CONFIG, DEPLOYER_ADDRESS } from "@/lib/stellar/config";
+import { STELLAR_CONFIG } from "@/lib/stellar/config";
 import { useTransactionStore } from "@/store/transaction-store";
 import { explorerTxUrl } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-// ── Helper: format GIG tokens (stroops → GIG) ────────────────────────────────
-function formatGig(stroops: number | null): string {
+// ── Helper: format STRM tokens (stroops → STRM) ────────────────────────────────
+function formatStrm(stroops: number | null): string {
   if (stroops === null) return "—";
-  return (stroops / 10_000_000).toFixed(2);
+  return (stroops / 10_000_000).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }
 
 export default function DashboardPage() {
@@ -71,21 +74,21 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6 max-w-4xl animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold">Wallet Dashboard</h1>
-        <p className="text-muted-foreground mt-1">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 gradient-text">Wallet Dashboard</h1>
+        <p className="text-slate-500 mt-1 font-medium">
           Manage your Stellar wallet connection and view account details
         </p>
       </div>
 
       {/* Error state */}
       {error && (
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-destructive/10 border border-destructive/20 animate-fade-in">
-          <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-200 animate-fade-in">
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-semibold text-sm text-destructive">
+            <p className="font-bold text-sm text-red-800">
               Connection Error
             </p>
-            <p className="text-sm text-destructive/80 mt-0.5">{error}</p>
+            <p className="text-sm text-red-700 font-medium mt-0.5">{error}</p>
           </div>
         </div>
       )}
@@ -93,21 +96,21 @@ export default function DashboardPage() {
       {!isConnected ? (
         /* ── Not connected ── */
         <div className="glass-card p-12 flex flex-col items-center gap-6 text-center">
-          <div className="w-20 h-20 rounded-2xl bg-stellar-gradient flex items-center justify-center animate-glow-pulse">
+          <div className="w-20 h-20 rounded-2xl bg-stellar-gradient flex items-center justify-center shadow-lg">
             <Wallet className="w-10 h-10 text-white" />
           </div>
           <div className="space-y-2">
-            <h2 className="text-xl font-bold">Connect Your Wallet</h2>
-            <p className="text-muted-foreground max-w-sm">
-              Connect a Stellar wallet to view your balance, post freelance gigs,
-              and fund escrow projects on the Stellar Testnet.
+            <h2 className="text-2xl font-extrabold text-slate-900">Connect Your Wallet</h2>
+            <p className="text-slate-600 max-w-sm font-medium">
+              Connect a Stellar wallet to view your XLM balance, launch payment streams,
+              and earn STRM protocol tokens on Stellar Testnet.
             </p>
           </div>
           <button
             id="dashboard-connect-btn"
             onClick={connect}
             disabled={isConnecting}
-            className="btn-stellar px-8 py-3 text-base"
+            className="btn-stellar px-8 py-3.5 text-base font-bold shadow-glow-stream"
           >
             {isConnecting ? (
               <>
@@ -121,25 +124,25 @@ export default function DashboardPage() {
               </>
             )}
           </button>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-slate-400 font-medium">
             Supports Freighter, XBULL, Albedo, and more
           </p>
         </div>
       ) : (
         /* ── Connected ── */
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* Main wallet card */}
           <div className="glass-card p-6 space-y-5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-stellar-gradient flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-stellar-gradient flex items-center justify-center shadow-md">
                   <Wallet className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="font-bold">Connected Wallet</p>
+                  <p className="font-extrabold text-base text-slate-900">Connected Wallet</p>
                   <div className="flex items-center gap-1.5 mt-0.5">
                     <div className="dot-active" />
-                    <span className="text-xs text-muted-foreground capitalize">
+                    <span className="text-xs text-slate-500 font-semibold capitalize">
                       {network || "testnet"}
                     </span>
                   </div>
@@ -148,7 +151,7 @@ export default function DashboardPage() {
               <button
                 id="dashboard-disconnect-btn"
                 onClick={disconnect}
-                className="text-xs text-muted-foreground hover:text-destructive transition-colors px-3 py-1.5 rounded-lg hover:bg-destructive/10"
+                className="text-xs font-bold text-red-600 hover:text-red-700 transition-colors px-3 py-1.5 rounded-xl hover:bg-red-50 border border-red-200"
               >
                 Disconnect
               </button>
@@ -156,13 +159,13 @@ export default function DashboardPage() {
 
             {/* Address */}
             <div>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-2">
                 Stellar Address
               </p>
-              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-muted/40 border border-white/[0.06]">
+              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200">
                 <span
                   id="wallet-address-display"
-                  className="font-mono text-sm text-foreground/90 flex-1 break-all"
+                  className="font-mono text-sm text-slate-800 font-semibold flex-1 break-all"
                 >
                   {address}
                 </span>
@@ -170,13 +173,13 @@ export default function DashboardPage() {
                   <button
                     id="copy-address-btn"
                     onClick={handleCopy}
-                    className="p-2 rounded-lg hover:bg-white/[0.08] transition-colors"
+                    className="p-2 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-slate-900 transition-colors"
                     aria-label="Copy address"
                   >
                     {copied ? (
-                      <Check className="w-4 h-4 text-emerald-400" />
+                      <Check className="w-4 h-4 text-emerald-600" />
                     ) : (
-                      <Copy className="w-4 h-4 text-muted-foreground" />
+                      <Copy className="w-4 h-4" />
                     )}
                   </button>
                   <a
@@ -184,80 +187,78 @@ export default function DashboardPage() {
                     href={explorerAccountUrl(address!)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg hover:bg-white/[0.08] transition-colors"
+                    className="p-2 rounded-lg hover:bg-slate-200/60 text-slate-500 hover:text-slate-900 transition-colors"
                     aria-label="View on explorer"
                   >
-                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                    <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Balance grid: XLM + CRWD Reward + Network Info */}
+          {/* Balance grid: XLM + STRM Reward + Network Info */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* XLM Balance */}
             <div className="glass-card p-6 space-y-3">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">
+                <p className="text-sm font-bold text-slate-500">
                   XLM Balance
                 </p>
                 <button
                   id="refresh-balance-btn"
                   onClick={handleRefreshBalance}
-                  className="p-1.5 rounded-lg hover:bg-white/[0.06] transition-colors"
+                  className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
                   aria-label="Refresh balance"
                 >
                   <RefreshCw
                     className={cn(
-                      "w-4 h-4 text-muted-foreground",
-                      isRefreshing && "animate-spin"
+                      "w-4 h-4",
+                      isRefreshing && "animate-spin text-blue-600"
                     )}
                   />
                 </button>
               </div>
-              <p className="text-4xl font-black gradient-text">
+              <p className="text-4xl font-extrabold gradient-text font-mono">
                 {balance ? parseFloat(balance).toFixed(4) : "—"}
               </p>
-              <p className="text-sm text-muted-foreground">XLM</p>
+              <p className="text-xs font-bold text-slate-400">XLM Native Asset</p>
             </div>
 
-            {/* GIG Reputation Token Balance ── earned via escrow contributions */}
-            <div className="glass-card p-6 space-y-3 relative overflow-hidden">
-              {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 pointer-events-none" />
+            {/* STRM Protocol Token Balance */}
+            <div className="glass-card p-6 space-y-3 relative overflow-hidden bg-blue-50/40 border-blue-200">
               <div className="flex items-center justify-between relative">
-                <p className="text-sm font-medium text-muted-foreground">
-                  GIG Reputation
+                <p className="text-sm font-bold text-slate-500">
+                  STRM Rewards
                 </p>
-                <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-primary/10 border border-primary/20">
-                  <Sparkles className="w-3 h-3 text-primary animate-pulse" />
-                  <span className="text-[10px] text-primary font-semibold">Earned</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 border border-blue-200">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse" />
+                  <span className="text-[10px] text-blue-700 font-extrabold">Protocol Token</span>
                 </div>
               </div>
-              <p className="text-4xl font-black relative gradient-text">
-                {formatGig(rewardBalance)}
+              <p className="text-4xl font-extrabold relative gradient-text font-mono">
+                {formatStrm(rewardBalance)}
               </p>
-              <p className="text-xs text-muted-foreground relative leading-relaxed">
-                GIG — earned via escrow contributions.<br />
-                <span className="text-primary font-medium">1 GIG = 1 XLM escrowed</span>
+              <p className="text-xs text-slate-600 relative leading-relaxed font-medium">
+                STRM — earned via payment streams.<br />
+                <span className="text-blue-700 font-bold">1 STRM = 1 XLM streamed</span>
               </p>
             </div>
 
             {/* Network Info */}
             <div className="glass-card p-6 space-y-3">
-              <p className="text-sm font-medium text-muted-foreground">
+              <p className="text-sm font-bold text-slate-500">
                 Network Info
               </p>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {[
                   { label: "Network", value: "Stellar Testnet" },
                   { label: "Contract", value: shortAddress(STELLAR_CONFIG.contractId || "Not deployed", 6) },
                   { label: "RPC", value: "soroban-testnet.stellar.org" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{label}</span>
-                    <span className="font-mono text-foreground/80">{value}</span>
+                    <span className="text-slate-500 font-medium">{label}</span>
+                    <span className="font-mono font-bold text-slate-800 text-xs">{value}</span>
                   </div>
                 ))}
               </div>
@@ -266,12 +267,12 @@ export default function DashboardPage() {
 
           {/* Recent transactions */}
           <div className="glass-card p-6 space-y-4">
-            <h3 className="font-bold">Recent Transactions</h3>
+            <h3 className="font-extrabold text-lg text-slate-900">Recent Transactions</h3>
 
             {recentTxs.length === 0 ? (
               <div className="text-center py-8">
-                <p className="text-muted-foreground text-sm">
-                  No transactions yet. Create a grant program or make a contribution to
+                <p className="text-slate-500 text-sm font-medium">
+                  No transactions recorded yet. Launch a payment stream or fund a vault to
                   get started.
                 </p>
               </div>
@@ -280,22 +281,22 @@ export default function DashboardPage() {
                 {recentTxs.map((tx) => (
                   <div
                     key={tx.id}
-                    className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-0"
+                    className="flex items-center justify-between py-3 border-b border-slate-100 last:border-0"
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={cn(
-                          "w-2 h-2 rounded-full",
+                          "w-2.5 h-2.5 rounded-full",
                           tx.status === "success"
-                            ? "bg-emerald-400"
+                            ? "bg-emerald-500"
                             : tx.status === "pending"
-                            ? "bg-amber-400 animate-pulse"
-                            : "bg-red-400"
+                            ? "bg-amber-500 animate-pulse"
+                            : "bg-red-500"
                         )}
                       />
                       <div>
-                        <p className="text-sm font-medium">{tx.description}</p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-sm font-bold text-slate-900">{tx.description}</p>
+                        <p className="text-xs text-slate-500 font-medium">
                           {tx.timestamp.toLocaleTimeString()}
                         </p>
                       </div>
@@ -303,12 +304,12 @@ export default function DashboardPage() {
                     <div className="flex items-center gap-2">
                       <span
                         className={cn(
-                          "text-xs font-semibold",
+                          "text-xs font-bold px-2 py-0.5 rounded-md",
                           tx.status === "success"
-                            ? "text-emerald-400"
+                            ? "text-emerald-700 bg-emerald-50"
                             : tx.status === "pending"
-                            ? "text-amber-400"
-                            : "text-red-400"
+                            ? "text-amber-700 bg-amber-50"
+                            : "text-red-700 bg-red-50"
                         )}
                       >
                         {tx.status}
@@ -318,9 +319,9 @@ export default function DashboardPage() {
                           href={explorerTxUrl(tx.hash)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-slate-400 hover:text-blue-600 transition-colors p-1"
                         >
-                          <ExternalLink className="w-3.5 h-3.5" />
+                          <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
                     </div>

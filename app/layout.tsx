@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Providers } from "@/components/Providers";
 import { Toaster } from "sonner";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jakarta",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
+  display: "swap",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -42,14 +50,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="en">
+      <body className={`${jakarta.variable} ${firaCode.variable} font-sans antialiased bg-slate-50 text-slate-900`}>
         <Providers>
           {/* Sidebar */}
           <Sidebar />
 
           {/* Main content area */}
-          <div className="lg:pl-64 min-h-screen flex flex-col bg-gradient-to-b from-black/40 via-black/20 to-black/40">
+          <div className="lg:pl-64 min-h-screen flex flex-col bg-slate-50/50">
             {/* Navbar */}
             <Navbar />
 
@@ -59,12 +67,12 @@ export default function RootLayout({
             </main>
 
             {/* Footer */}
-            <footer className="lg:pl-0 border-t border-white/[0.06] px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-              <span>© {new Date().getFullYear()} <span className="gradient-text font-semibold">StellarStream</span> — Real-Time XLM Payment Streaming Protocol</span>
+            <footer className="lg:pl-0 border-t border-slate-200 bg-white px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+              <span>© {new Date().getFullYear()} <span className="gradient-text font-bold">StellarStream</span> — Real-Time XLM Payment Streaming Protocol</span>
               <div className="flex items-center gap-4">
-                <a href="https://github.com/sdutta2004/StellarStream" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
-                <a href="https://stellar.expert/explorer/testnet" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">Explorer</a>
-                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />Testnet</span>
+                <a href="https://github.com/sdutta2004/StellarStream" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors">GitHub</a>
+                <a href="https://stellar.expert/explorer/testnet" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors">Explorer</a>
+                <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />Testnet</span>
               </div>
             </footer>
           </div>
@@ -74,12 +82,13 @@ export default function RootLayout({
             position="bottom-right"
             richColors
             closeButton
-            theme="dark"
+            theme="light"
             toastOptions={{
               style: {
-                background: "hsl(234, 22%, 10%)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "hsl(210, 40%, 98%)",
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                color: "#0F172A",
+                boxShadow: "0 10px 25px -5px rgba(15, 23, 42, 0.08)",
               },
             }}
           />

@@ -114,10 +114,10 @@ export function StreamCard({
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
-          <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors truncate">
+          <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors truncate">
             {title}
           </h3>
-          <p className="text-xs text-muted-foreground mt-0.5 font-mono truncate">
+          <p className="text-xs text-slate-500 mt-0.5 font-mono truncate">
             Sender: {shortAddr(senderAddress)}
           </p>
         </div>
@@ -128,16 +128,16 @@ export function StreamCard({
       </div>
 
       {/* Description */}
-      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+      <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
         {description}
       </p>
 
       {/* Stream progress */}
       <div className="space-y-2">
         <div className="flex justify-between items-center text-xs">
-          <span className="text-muted-foreground">Vested</span>
-          <span className={cn("font-mono font-semibold", isLive ? "stream-counter" : "text-foreground")}>
-            {formatXLM(vestedDisplay)} <span className="text-muted-foreground font-normal">/ {formatXLM(totalVault)} XLM</span>
+          <span className="text-slate-500 font-medium">Vested</span>
+          <span className={cn("font-mono font-bold", isLive ? "stream-counter" : "text-slate-900")}>
+            {formatXLM(vestedDisplay)} <span className="text-slate-400 font-normal">/ {formatXLM(totalVault)} XLM</span>
           </span>
         </div>
         <div className="progress-bar">
@@ -146,10 +146,10 @@ export function StreamCard({
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="flex justify-between text-[10px] text-muted-foreground">
+        <div className="flex justify-between text-[11px] text-slate-500 font-medium">
           <span>{progress.toFixed(1)}% vested</span>
           {isLive && (
-            <span className="text-primary font-mono">
+            <span className="text-blue-600 font-mono font-bold">
               {flowRateXLM.toFixed(6)} XLM/sec
             </span>
           )}
@@ -161,14 +161,14 @@ export function StreamCard({
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-1">
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Clock className="w-3 h-3" />
+        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+          <Clock className="w-3.5 h-3.5 text-slate-400" />
           {isLive ? (
             <span>
               {daysLeft}d {hoursLeft}h remaining
             </span>
           ) : (
-            <span className={status === "Expired" ? "text-red-400/70" : "text-primary/70"}>
+            <span className={status === "Expired" ? "text-red-500" : "text-blue-600 font-semibold"}>
               {status === "Expired" ? "Stream ended" : "Stream complete"}
             </span>
           )}
@@ -176,9 +176,9 @@ export function StreamCard({
         <Link
           href={`/campaigns/${id}`}
           id={`stream-card-view-${id}`}
-          className="btn-ghost px-3 py-1.5 text-xs hover:border-primary/40"
+          className="btn-ghost px-3 py-1.5 text-xs font-semibold hover:border-blue-300"
         >
-          <TrendingUp className="w-3 h-3" />
+          <TrendingUp className="w-3 h-3 text-blue-600" />
           View Stream
         </Link>
       </div>

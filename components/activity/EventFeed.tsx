@@ -20,28 +20,28 @@ const EVENT_CONFIG: Record<
   { label: string; icon: typeof Heart; color: string; bg: string }
 > = {
   campaign_created: {
-    label: "Grant Created",
+    label: "Stream Created",
     icon: Zap,
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10 border-indigo-500/20",
+    color: "text-blue-700",
+    bg: "bg-blue-50 border-blue-200",
   },
   donation_made: {
-    label: "Grant Funded",
+    label: "Stream Funded",
     icon: Heart,
-    color: "text-yellow-400",
-    bg: "bg-yellow-500/10 border-yellow-500/20",
+    color: "text-amber-700",
+    bg: "bg-amber-50 border-amber-200",
   },
   funds_withdrawn: {
-    label: "Funds Claimed",
+    label: "Vested Claimed",
     icon: ArrowUpRight,
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
+    color: "text-emerald-700",
+    bg: "bg-emerald-50 border-emerald-200",
   },
   refund_issued: {
-    label: "Refund Claimed",
+    label: "Stream Refunded",
     icon: RotateCcw,
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/20",
+    color: "text-purple-700",
+    bg: "bg-purple-50 border-purple-200",
   },
 };
 
@@ -49,11 +49,11 @@ const EVENT_CONFIG: Record<
 type FilterType = "all" | EventType;
 
 const FILTERS: { value: FilterType; label: string; color: string }[] = [
-  { value: "all",              label: "All",        color: "text-foreground" },
-  { value: "campaign_created", label: "Grants",     color: "text-indigo-400" },
-  { value: "donation_made",    label: "Funding",    color: "text-yellow-400" },
-  { value: "funds_withdrawn",  label: "Claims",     color: "text-amber-400" },
-  { value: "refund_issued",    label: "Refunds",    color: "text-blue-400" },
+  { value: "all",              label: "All",        color: "text-slate-900" },
+  { value: "campaign_created", label: "Streams",    color: "text-blue-700" },
+  { value: "donation_made",    label: "Funding",    color: "text-amber-700" },
+  { value: "funds_withdrawn",  label: "Claims",     color: "text-emerald-700" },
+  { value: "refund_issued",    label: "Refunds",    color: "text-purple-700" },
 ];
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -87,10 +87,10 @@ function LiveCountdown() {
 
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" className="rotate-[-90deg]">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="hsl(var(--muted))" strokeWidth="2" />
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#E2E8F0" strokeWidth="2" />
       <circle
         cx="12" cy="12" r="9" fill="none"
-        stroke="hsl(var(--primary))" strokeWidth="2"
+        stroke="#2563EB" strokeWidth="2"
         strokeDasharray={`${dash} ${circumference}`}
         strokeLinecap="round"
         style={{ transition: "stroke-dasharray 0.2s linear" }}
@@ -130,12 +130,12 @@ export function EventFeed({ limit, showHeader = true }: EventFeedProps) {
           {/* Header row */}
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-center gap-3">
-              <h2 className="font-bold text-lg">Activity Feed</h2>
+              <h2 className="font-extrabold text-lg text-slate-900">Activity Feed</h2>
 
               {/* Live streaming indicator */}
-              <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
-                <div className={cn("w-1.5 h-1.5 rounded-full bg-primary", isPolling && "animate-pulse")} />
-                <span className="text-xs text-primary font-medium">Live</span>
+              <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200">
+                <div className={cn("w-2 h-2 rounded-full bg-blue-600", isPolling && "animate-pulse")} />
+                <span className="text-xs text-blue-700 font-bold">Live</span>
                 {isPolling && <LiveCountdown />}
               </div>
             </div>
@@ -146,8 +146,8 @@ export function EventFeed({ limit, showHeader = true }: EventFeedProps) {
               aria-label="Refresh events"
             >
               {isPolling
-                ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                : <Activity className="w-3.5 h-3.5" />
+                ? <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                : <Activity className="w-3.5 h-3.5 text-blue-600" />
               }
               Refresh
             </button>
@@ -155,21 +155,21 @@ export function EventFeed({ limit, showHeader = true }: EventFeedProps) {
 
           {/* Filter pills */}
           <div className="flex items-center gap-2 flex-wrap">
-            <Filter className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
+            <Filter className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
             {FILTERS.map(({ value, label, color }) => (
               <button
                 key={value}
                 onClick={() => setActiveFilter(value)}
                 className={cn(
-                  "px-3 py-1 rounded-full text-xs font-semibold border transition-all",
+                  "px-3 py-1 rounded-full text-xs font-semibold border transition-all shadow-sm",
                   activeFilter === value
-                    ? "bg-primary/15 border-primary/30 text-primary"
-                    : "bg-transparent border-white/[0.08] text-muted-foreground hover:border-white/20 hover:text-foreground"
+                    ? "bg-blue-50 border-blue-200 text-blue-700 font-bold"
+                    : "bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
                 )}
               >
                 {label}
                 {value !== "all" && (
-                  <span className="ml-1.5 text-[10px] opacity-60">
+                  <span className="ml-1.5 text-[10px] opacity-70">
                     {allEvents.filter((e) => e.type === value).length}
                   </span>
                 )}
@@ -191,16 +191,16 @@ export function EventFeed({ limit, showHeader = true }: EventFeedProps) {
       {/* Empty state */}
       {!isLoading && displayEvents.length === 0 && (
         <div className="glass-card px-6 py-12 flex flex-col items-center gap-3 text-center">
-          <div className="w-12 h-12 rounded-full bg-muted/50 flex items-center justify-center">
-            <Activity className="w-6 h-6 text-muted-foreground" />
+          <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+            <Activity className="w-6 h-6 text-slate-400" />
           </div>
           <div>
-            <p className="font-semibold text-foreground/80">
-              {activeFilter === "all" ? "No events yet" : `No ${activeFilter.replace("_", " ")} events`}
+            <p className="font-bold text-slate-900">
+              {activeFilter === "all" ? "No events recorded yet" : `No ${activeFilter.replace("_", " ")} events`}
             </p>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-slate-500 mt-1 font-medium">
               {activeFilter === "all"
-                ? "Events will appear here when campaigns are created or donations are made"
+                ? "On-chain events will stream here automatically when payment streams are created or funded"
                 : "Try switching to a different filter"}
             </p>
           </div>
@@ -227,8 +227,8 @@ function EventCard({ event }: { event: ContractEvent }) {
   const config = EVENT_CONFIG[event.type] || {
     label: event.type,
     icon: Activity,
-    color: "text-muted-foreground",
-    bg: "bg-muted/20",
+    color: "text-slate-600",
+    bg: "bg-slate-50 border-slate-200",
   };
   const Icon = config.icon;
 
@@ -237,7 +237,7 @@ function EventCard({ event }: { event: ContractEvent }) {
       {/* Icon */}
       <div
         className={cn(
-          "w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 border",
+          "w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 border shadow-sm",
           config.bg
         )}
       >
@@ -251,30 +251,30 @@ function EventCard({ event }: { event: ContractEvent }) {
             <div className="flex items-center gap-2 flex-wrap">
               <span
                 className={cn(
-                  "text-xs font-semibold px-2 py-0.5 rounded-full border",
+                  "text-xs font-bold px-2 py-0.5 rounded-full border",
                   config.bg,
                   config.color
                 )}
               >
                 {config.label}
               </span>
-              <span className="text-xs text-muted-foreground">
-                Campaign #{event.campaignId}
+              <span className="text-xs text-slate-400 font-mono font-semibold">
+                Stream #{event.campaignId}
               </span>
             </div>
 
             {/* Description */}
-            <p className="text-sm text-foreground/90 mt-1.5 line-clamp-1">
+            <p className="text-sm text-slate-800 font-medium mt-1.5 line-clamp-1">
               {event.description}
             </p>
 
             {/* Address + Amount */}
             <div className="flex items-center gap-3 mt-1.5">
-              <span className="text-xs font-mono text-muted-foreground">
+              <span className="text-xs font-mono text-slate-500">
                 {shortAddress(event.walletAddress, 4)}
               </span>
               {event.amount !== undefined && (
-                <span className={cn("text-xs font-semibold", config.color)}>
+                <span className={cn("text-xs font-bold font-mono", config.color)}>
                   {formatXlm(event.amount)}
                 </span>
               )}
@@ -283,14 +283,14 @@ function EventCard({ event }: { event: ContractEvent }) {
 
           {/* Right side: time + explorer */}
           <div className="flex flex-col items-end gap-1 flex-shrink-0">
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-slate-400 font-medium">
               {formatRelativeTime(event.timestamp)}
             </span>
             <a
               href={explorerTxUrl(event.txHash)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-primary hover:text-primary/80 font-mono transition-colors"
+              className="text-xs text-blue-600 hover:text-blue-800 font-mono font-semibold transition-colors"
               title={event.txHash}
             >
               {event.txHash.slice(0, 8)}...

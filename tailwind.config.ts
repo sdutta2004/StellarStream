@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-fira-code)", "monospace"],
+        sans: ["var(--font-jakarta)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
+        mono: ["var(--font-fira-code)", "Fira Code", "monospace"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -47,30 +47,30 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        // Custom brand colors — StellarStream Electric Cyan / Deep Violet
+        // Clean Brand palette — Cobalt & Royal Purple
         stellar: {
-          50: "hsl(185, 100%, 97%)",
-          100: "hsl(185, 98%, 90%)",
-          200: "hsl(185, 96%, 78%)",
-          300: "hsl(185, 95%, 65%)",
-          400: "hsl(185, 100%, 55%)",  // Electric Cyan (#00F0FF)
-          500: "hsl(185, 100%, 45%)",
-          600: "hsl(185, 100%, 36%)",
-          700: "hsl(185, 100%, 27%)",
-          800: "hsl(185, 100%, 17%)",
-          900: "hsl(185, 100%, 9%)",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          300: "#93C5FD",
+          400: "#60A5FA",
+          500: "#3B82F6",
+          600: "#2563EB", // Primary Cobalt
+          700: "#1D4ED8",
+          800: "#1E40AF",
+          900: "#1E3A8A",
         },
-        violet: {
-          50: "hsl(270, 100%, 97%)",
-          100: "hsl(270, 98%, 90%)",
-          200: "hsl(270, 96%, 80%)",
-          300: "hsl(270, 95%, 72%)",
-          400: "hsl(270, 100%, 65%)",  // Deep Violet (#9D00FF)
-          500: "hsl(270, 100%, 55%)",
-          600: "hsl(270, 100%, 45%)",
-          700: "hsl(270, 100%, 35%)",
-          800: "hsl(270, 100%, 22%)",
-          900: "hsl(270, 100%, 12%)",
+        indigo: {
+          50: "#EEF2FF",
+          100: "#E0E7FF",
+          200: "#C7D2FE",
+          300: "#A5B4FC",
+          400: "#818CF8",
+          500: "#6366F1",
+          600: "#4F46E5",
+          700: "#4338CA",
+          800: "#3730A3",
+          900: "#312E81",
         },
       },
       backgroundImage: {
@@ -78,13 +78,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-gradient":
-          "linear-gradient(135deg, hsl(185,100%,4%) 0%, hsl(222,47%,6%) 50%, hsl(270,60%,7%) 100%)",
+          "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #EEF2FF 100%)",
         "card-gradient":
-          "linear-gradient(135deg, rgba(0,240,255,0.03) 0%, rgba(255,255,255,0.02) 100%)",
+          "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
         "stellar-gradient":
-          "linear-gradient(135deg, hsl(185,100%,40%) 0%, hsl(210,100%,50%) 50%, hsl(270,100%,55%) 100%)",
+          "linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%)",
         "stream-gradient":
-          "linear-gradient(90deg, hsl(185,100%,45%) 0%, hsl(210,100%,60%) 50%, hsl(270,100%,60%) 100%)",
+          "linear-gradient(90deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%)",
       },
       keyframes: {
         "fade-in": {
@@ -105,10 +105,10 @@ const config: Config = {
         },
         "glow-pulse": {
           "0%, 100%": {
-            boxShadow: "0 0 20px hsl(185 100% 50% / 0.25)",
+            boxShadow: "0 4px 14px rgba(37, 99, 235, 0.25)",
           },
           "50%": {
-            boxShadow: "0 0 45px hsl(185 100% 50% / 0.55), 0 0 80px hsl(270 100% 60% / 0.15)",
+            boxShadow: "0 8px 25px rgba(37, 99, 235, 0.4)",
           },
         },
         "stream-flow": {
@@ -117,7 +117,7 @@ const config: Config = {
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-6px)" },
         },
       },
       animation: {
@@ -133,12 +133,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        glow: "0 0 30px hsl(185 100% 50% / 0.25)",
-        "glow-cyan": "0 0 30px hsl(185 100% 55% / 0.25)",
-        "glow-violet": "0 0 30px hsl(270 100% 60% / 0.2)",
-        "glow-stream": "0 0 20px hsl(185 100% 50% / 0.3), 0 0 50px hsl(270 100% 60% / 0.1)",
-        card: "0 4px 24px rgba(0, 0, 0, 0.35)",
-        "card-hover": "0 8px 40px rgba(0, 0, 0, 0.5)",
+        glow: "0 4px 14px rgba(37, 99, 235, 0.25)",
+        "glow-stream": "0 4px 20px rgba(37, 99, 235, 0.28)",
+        card: "0 4px 20px -2px rgba(15, 23, 42, 0.05)",
+        "card-hover": "0 12px 30px -4px rgba(37, 99, 235, 0.08)",
       },
     },
   },

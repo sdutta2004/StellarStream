@@ -14,38 +14,39 @@ import {
   Award,
   Shield,
   Activity,
+  Zap,
 } from "lucide-react";
 import { cn, formatXlm, explorerTxUrl } from "@/lib/utils";
 
 const TYPE_CONFIG = {
   create_campaign: {
-    icon: Award,
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10 border-indigo-500/20",
-    label: "Create Grant Program",
+    icon: Zap,
+    color: "text-blue-700",
+    bg: "bg-blue-50 border-blue-200",
+    label: "Create Payment Stream",
   },
   donate: {
     icon: Heart,
-    color: "text-yellow-400",
-    bg: "bg-yellow-500/10 border-yellow-500/20",
-    label: "Grant Funded",
+    color: "text-amber-700",
+    bg: "bg-amber-50 border-amber-200",
+    label: "Stream Funded",
   },
   withdraw: {
     icon: ArrowUpRight,
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
-    label: "Funds Claimed",
+    color: "text-emerald-700",
+    bg: "bg-emerald-50 border-emerald-200",
+    label: "Vested XLM Withdrawn",
   },
   refund: {
     icon: RotateCcw,
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/20",
-    label: "Refund Claimed",
+    color: "text-purple-700",
+    bg: "bg-purple-50 border-purple-200",
+    label: "Stream Refunded",
   },
   initialize: {
     icon: Shield,
-    color: "text-primary",
-    bg: "bg-primary/10 border-primary/20",
+    color: "text-blue-700",
+    bg: "bg-blue-50 border-blue-200",
     label: "Initialize Contract",
   },
 };
@@ -53,18 +54,18 @@ const TYPE_CONFIG = {
 const STATUS_CONFIG = {
   pending: {
     icon: Clock,
-    color: "text-amber-400",
+    color: "text-amber-600",
     className: "badge-pending",
   },
   success: {
     icon: CheckCircle,
-    color: "text-emerald-400",
-    className: "badge-success",
+    color: "text-emerald-600",
+    className: "badge-completed",
   },
   failed: {
     icon: AlertTriangle,
-    color: "text-destructive",
-    className: "badge-error",
+    color: "text-red-600",
+    className: "badge-cancelled",
   },
 };
 
@@ -76,8 +77,8 @@ export default function TransactionsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black tracking-tight font-sans">Transaction History</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight font-sans gradient-text">Transaction History</h1>
+          <p className="text-slate-500 mt-1 font-medium">
             Track your Soroban smart contract submissions and their status on the Stellar network
           </p>
         </div>
@@ -85,9 +86,9 @@ export default function TransactionsPage() {
         {transactions.length > 0 && (
           <button
             onClick={clearAll}
-            className="btn-ghost text-xs text-muted-foreground hover:text-destructive hover:bg-destructive/10 hover:border-destructive/20 border-white/5 py-2 px-3.5"
+            className="btn-ghost text-xs text-red-600 hover:bg-red-50 border-red-200 py-2 px-3.5"
           >
-            <Trash2 className="w-4 h-4" />
+            <Trash2 className="w-4 h-4 text-red-500" />
             Clear History
           </button>
         )}
@@ -96,12 +97,12 @@ export default function TransactionsPage() {
       {/* List */}
       {transactions.length === 0 ? (
         <div className="glass-card p-12 text-center space-y-4">
-          <div className="w-12 h-12 rounded-xl bg-white/[0.02] border border-white/[0.05] mx-auto flex items-center justify-center">
-            <Activity className="w-6 h-6 text-muted-foreground" />
+          <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 mx-auto flex items-center justify-center">
+            <Activity className="w-6 h-6 text-slate-400" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-bold text-lg">No Transactions Yet</h3>
-            <p className="text-sm text-muted-foreground max-w-sm mx-auto">
+            <h3 className="font-bold text-lg text-slate-900">No Transactions Recorded Yet</h3>
+            <p className="text-sm text-slate-500 max-w-sm mx-auto font-medium">
               Transactions performed on this device will be logged here in real time.
             </p>
           </div>
@@ -111,8 +112,8 @@ export default function TransactionsPage() {
           {transactions.map((tx) => {
             const typeConfig = TYPE_CONFIG[tx.type] || {
               icon: FileCode,
-              color: "text-muted-foreground",
-              bg: "bg-muted/10 border-muted/20",
+              color: "text-slate-600",
+              bg: "bg-slate-50 border-slate-200",
               label: tx.type,
             };
             const statusConfig = STATUS_CONFIG[tx.status];
@@ -127,7 +128,7 @@ export default function TransactionsPage() {
                 {/* Type Icon */}
                 <div
                   className={cn(
-                    "w-10 h-10 rounded-xl flex items-center justify-center border flex-shrink-0",
+                    "w-10 h-10 rounded-xl flex items-center justify-center border flex-shrink-0 shadow-sm",
                     typeConfig.bg
                   )}
                 >
@@ -138,16 +139,16 @@ export default function TransactionsPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <h3 className="font-bold text-sm text-foreground/90">
+                      <h3 className="font-bold text-sm text-slate-900">
                         {typeConfig.label}
                       </h3>
-                      <p className="text-sm text-foreground mt-1">
+                      <p className="text-sm text-slate-600 font-medium mt-1">
                         {tx.description}
                       </p>
                     </div>
 
                     <div className="flex items-center gap-2 self-start sm:self-auto flex-shrink-0">
-                      <span className={cn("badge text-xs", statusConfig.className)}>
+                      <span className={cn("badge text-xs font-bold", statusConfig.className)}>
                         <StatusIcon className="w-3.5 h-3.5" />
                         {tx.status}
                       </span>
@@ -155,7 +156,7 @@ export default function TransactionsPage() {
                   </div>
 
                   {/* Details row */}
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground mt-3 pt-3 border-t border-white/[0.04]">
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 mt-3 pt-3 border-t border-slate-100 font-medium">
                     <span>
                       {tx.timestamp.toLocaleDateString("en-US", {
                         month: "short",
@@ -169,13 +170,13 @@ export default function TransactionsPage() {
                     </span>
 
                     {tx.amount !== undefined && (
-                      <span className={cn("font-semibold", typeConfig.color)}>
+                      <span className={cn("font-bold font-mono", typeConfig.color)}>
                         Amount: {formatXlm(tx.amount)}
                       </span>
                     )}
 
                     {tx.campaignId && (
-                      <span>Campaign #{tx.campaignId}</span>
+                      <span className="font-mono">Stream #{tx.campaignId}</span>
                     )}
 
                     {tx.hash ? (
@@ -183,20 +184,20 @@ export default function TransactionsPage() {
                         href={explorerTxUrl(tx.hash)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-mono ml-auto"
+                        className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors font-mono font-bold ml-auto"
                       >
                         Tx: {tx.hash.slice(0, 12)}...
-                        <ExternalLink className="w-3 h-3" />
+                        <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     ) : (
-                      <span className="italic ml-auto">Simulated/Pending sign</span>
+                      <span className="italic ml-auto text-slate-400">Simulated/Pending sign</span>
                     )}
                   </div>
 
                   {/* Error display */}
                   {tx.error && (
-                    <div className="mt-2.5 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-xs text-destructive flex items-start gap-1.5 leading-relaxed">
-                      <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <div className="mt-2.5 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-1.5 leading-relaxed font-medium">
+                      <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5 text-red-600" />
                       <span>{tx.error}</span>
                     </div>
                   )}

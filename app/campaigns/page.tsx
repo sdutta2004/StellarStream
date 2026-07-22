@@ -36,8 +36,8 @@ export default function CampaignsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black tracking-tight gradient-text">Active Payment Streams</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 className="text-3xl font-extrabold tracking-tight gradient-text">Active Payment Streams</h1>
+          <p className="text-slate-500 mt-1 font-medium">
             Discover and fund real-time XLM salary and payment streams on Stellar
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function CampaignsPage() {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Search */}
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-muted-foreground" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
           <input
             id="stream-search-input"
             type="text"
@@ -85,10 +85,10 @@ export default function CampaignsPage() {
               id={`filter-btn-${status.toLowerCase()}`}
               onClick={() => setStatusFilter(status)}
               className={cn(
-                "px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border",
+                "px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border shadow-sm",
                 statusFilter === status
-                  ? "bg-primary/10 border-primary/30 text-primary"
-                  : "bg-white/[0.02] border-white/5 text-muted-foreground hover:bg-white/[0.05] hover:text-foreground"
+                  ? "bg-blue-50 border-blue-200 text-blue-700 font-bold"
+                  : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               )}
             >
               {status === "Withdrawn"
@@ -114,12 +114,12 @@ export default function CampaignsPage() {
         </div>
       ) : error ? (
         <div className="glass-card p-12 text-center space-y-4">
-          <div className="w-12 h-12 rounded-xl bg-destructive/10 border border-destructive/20 mx-auto flex items-center justify-center">
-            <Info className="w-6 h-6 text-destructive" />
+          <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 mx-auto flex items-center justify-center">
+            <Info className="w-6 h-6 text-red-600" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-bold text-lg">Failed to Load Payment Streams</h3>
-            <p className="text-sm text-muted-foreground max-w-md mx-auto">
+            <h3 className="font-bold text-lg text-slate-900">Failed to Load Payment Streams</h3>
+            <p className="text-sm text-slate-500 max-w-md mx-auto">
               There was an issue communicating with the Stellar network. Please check your connection or try again later.
             </p>
           </div>
@@ -132,12 +132,12 @@ export default function CampaignsPage() {
         </div>
       ) : (
         <div className="glass-card p-12 text-center space-y-4">
-          <div className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.06] mx-auto flex items-center justify-center">
-            <Search className="w-6 h-6 text-muted-foreground" />
+          <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 mx-auto flex items-center justify-center">
+            <Search className="w-6 h-6 text-slate-400" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-bold text-lg">No Active Streams Found</h3>
-            <p className="text-sm text-muted-foreground max-w-sm mx-auto">
+            <h3 className="font-bold text-lg text-slate-900">No Active Streams Found</h3>
+            <p className="text-sm text-slate-500 max-w-sm mx-auto">
               No payment streams match your filters. Try adjusting your search or launching a new stream.
             </p>
           </div>

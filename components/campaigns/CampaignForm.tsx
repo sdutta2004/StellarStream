@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { X, Briefcase, Calendar, Target, FileText, Loader2, AlertCircle } from "lucide-react";
+import { X, Zap, Calendar, Target, FileText, Loader2, AlertCircle } from "lucide-react";
 import { useCreateCampaign } from "@/hooks/useCampaigns";
 import { useWalletStore } from "@/store/wallet-store";
 import { cn } from "@/lib/utils";
 import type { CreateCampaignParams } from "@/types";
 
-interface GigFormProps {
+interface StreamFormModalProps {
   onClose: () => void;
 }
 
-export function CampaignForm({ onClose }: GigFormProps) {
+export function CampaignForm({ onClose }: StreamFormModalProps) {
   const { isConnected } = useWalletStore();
   const { mutate: createCampaign, isPending, error } = useCreateCampaign();
 
@@ -50,93 +50,93 @@ export function CampaignForm({ onClose }: GigFormProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Modal */}
       <div
-        id="create-gig-modal"
-        className="relative w-full max-w-lg glass-card animate-fade-in"
+        id="create-stream-modal"
+        className="relative w-full max-w-lg glass-card bg-white shadow-2xl animate-fade-in"
         style={{ transform: "none" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.06]">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-stellar-gradient flex items-center justify-center">
-              <Briefcase className="w-5 h-5 text-white" />
+            <div className="w-9 h-9 rounded-xl bg-stellar-gradient flex items-center justify-center shadow-md">
+              <Zap className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="font-bold text-base">Post a Freelance Gig</h2>
-              <p className="text-xs text-muted-foreground">Create a new milestone-based escrow project</p>
+              <h2 className="font-bold text-base text-slate-900">Launch Payment Stream</h2>
+              <p className="text-xs text-slate-500 font-medium">Create a new real-time XLM salary vesting vault</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:bg-white/[0.06] transition-colors"
+            className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
             aria-label="Close modal"
           >
-            <X className="w-4 h-4 text-muted-foreground" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* GIG Token Info Banner */}
-        <div className="mx-6 mt-4 p-3 rounded-xl bg-primary/5 border border-primary/20 flex items-center gap-2.5 text-xs text-primary">
-          <Briefcase className="w-4 h-4 flex-shrink-0" />
-          <span>Posters & Applicants receive <strong>1 GIG Token</strong> per 1 XLM escrowed upon completion.</span>
+        {/* STRM Token Info Banner */}
+        <div className="mx-6 mt-4 p-3 rounded-xl bg-blue-50 border border-blue-200 flex items-center gap-2.5 text-xs text-blue-800 font-medium">
+          <Zap className="w-4 h-4 flex-shrink-0 text-blue-600" />
+          <span>Stream participants receive <strong>1 STRM Token</strong> per 1 XLM streamed via cross-contract mint.</span>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="px-6 py-5 space-y-5">
           {/* Title */}
           <div className="space-y-1.5">
-            <label htmlFor="campaign-title" className="text-sm font-medium text-foreground/90">
-              Gig Title *
+            <label htmlFor="campaign-title" className="text-sm font-semibold text-slate-700">
+              Stream Title *
             </label>
             <div className="relative">
-              <FileText className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <FileText className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 id="campaign-title"
                 type="text"
-                placeholder="e.g. Build a Stellar DeFi Dashboard with Soroban escrow"
+                placeholder="e.g. Monthly Developer Salary — Q1 2026"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
                 className={cn(
                   "input-stellar pl-10",
-                  formErrors.title && "border-destructive/60"
+                  formErrors.title && "border-red-300 ring-2 ring-red-500/10"
                 )}
                 maxLength={100}
               />
             </div>
             {formErrors.title && (
-              <p className="text-xs text-destructive">{String(formErrors.title)}</p>
+              <p className="text-xs text-red-600 font-medium">{String(formErrors.title)}</p>
             )}
-            <p className="text-xs text-muted-foreground text-right">
+            <p className="text-xs text-slate-400 text-right font-mono">
               {form.title.length}/100
             </p>
           </div>
 
           {/* Description */}
           <div className="space-y-1.5">
-            <label htmlFor="campaign-desc" className="text-sm font-medium text-foreground/90">
-              Deliverables / Description *
+            <label htmlFor="campaign-desc" className="text-sm font-semibold text-slate-700">
+              Stream Purpose & Terms *
             </label>
             <textarea
               id="campaign-desc"
-              placeholder="Describe the gig deliverables, milestones, and escrow release criteria..."
+              placeholder="Describe stream purpose, recipient expectations, and vesting terms..."
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={4}
               className={cn(
                 "input-stellar resize-none",
-                formErrors.description && "border-destructive/60"
+                formErrors.description && "border-red-300 ring-2 ring-red-500/10"
               )}
               maxLength={500}
             />
             {formErrors.description && (
-              <p className="text-xs text-destructive">{String(formErrors.description)}</p>
+              <p className="text-xs text-red-600 font-medium">{String(formErrors.description)}</p>
             )}
-            <p className="text-xs text-muted-foreground text-right">
+            <p className="text-xs text-slate-400 text-right font-mono">
               {form.description.length}/500
             </p>
           </div>
@@ -144,10 +144,10 @@ export function CampaignForm({ onClose }: GigFormProps) {
           {/* Escrow Goal + Duration */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label htmlFor="campaign-goal" className="text-sm font-medium text-foreground/90">
+              <label htmlFor="campaign-goal" className="text-sm font-semibold text-slate-700">
                 <div className="flex items-center gap-1.5">
-                  <Target className="w-3.5 h-3.5 text-primary" />
-                  Escrow Amount (XLM) *
+                  <Target className="w-3.5 h-3.5 text-blue-600" />
+                  Total Vault (XLM) *
                 </div>
               </label>
               <input
@@ -161,18 +161,18 @@ export function CampaignForm({ onClose }: GigFormProps) {
                 }
                 className={cn(
                   "input-stellar",
-                  formErrors.goal && "border-destructive/60"
+                  formErrors.goal && "border-red-300 ring-2 ring-red-500/10"
                 )}
               />
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-slate-500 font-medium">
                 ≈ ${(form.goal * 0.12).toFixed(0)} USD
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="campaign-duration" className="text-sm font-medium text-foreground/90">
+              <label htmlFor="campaign-duration" className="text-sm font-semibold text-slate-700">
                 <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-secondary" />
+                  <Calendar className="w-3.5 h-3.5 text-purple-600" />
                   Duration (Days) *
                 </div>
               </label>
@@ -190,10 +190,10 @@ export function CampaignForm({ onClose }: GigFormProps) {
                 }
                 className={cn(
                   "input-stellar",
-                  formErrors.durationDays && "border-destructive/60"
+                  formErrors.durationDays && "border-red-300 ring-2 ring-red-500/10"
                 )}
               />
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-slate-500 font-medium">
                 Ends{" "}
                 {new Date(
                   Date.now() + form.durationDays * 86400 * 1000
@@ -207,18 +207,18 @@ export function CampaignForm({ onClose }: GigFormProps) {
 
           {/* Error message */}
           {error && (
-            <div className="flex items-start gap-2 px-4 py-3 rounded-lg bg-destructive/10 border border-destructive/20">
-              <AlertCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-destructive">{String(error)}</p>
+            <div className="flex items-start gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-200">
+              <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700 font-medium">{String(error)}</p>
             </div>
           )}
 
           {/* Wallet warning */}
           {!isConnected && (
-            <div className="flex items-start gap-2 px-4 py-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
-              <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-amber-400">
-                Please connect your wallet to post a gig
+            <div className="flex items-start gap-2 px-4 py-3 rounded-xl bg-amber-50 border border-amber-200">
+              <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-amber-800 font-medium">
+                Please connect your wallet to launch a stream
               </p>
             </div>
           )}
@@ -241,20 +241,20 @@ export function CampaignForm({ onClose }: GigFormProps) {
               {isPending ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin relative z-10" />
-                  <span>Submitting...</span>
+                  <span>Launching…</span>
                 </>
               ) : (
                 <>
-                  <Briefcase className="w-4 h-4 relative z-10" />
-                  <span>Post Gig</span>
+                  <Zap className="w-4 h-4 relative z-10" />
+                  <span>Launch Stream</span>
                 </>
               )}
             </button>
           </div>
 
           {isConnected && (
-            <p className="text-xs text-muted-foreground text-center">
-              This will submit a transaction on the Stellar Testnet
+            <p className="text-xs text-slate-400 text-center font-medium">
+              This will submit a Soroban smart contract transaction on Stellar Testnet
             </p>
           )}
         </form>

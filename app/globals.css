@@ -1,38 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ──────────────────────────────────────────────────────────────────────────────
-   CSS Variables (Design Tokens) — StellarStream Electric Cyan / Deep Violet Theme
+   CSS Variables (Design Tokens) — StellarStream Modern Light Theme (Clean White)
 ────────────────────────────────────────────────────────────────────────────── */
 
 @layer base {
   :root {
-    /* Background: Ultra-dark space navy */
-    --background: 222 47% 6%;
-    --foreground: 200 15% 96%;
-    --card: 222 40% 8%;
-    --card-foreground: 200 15% 96%;
-    --popover: 222 40% 8%;
-    --popover-foreground: 200 15% 96%;
-    /* Primary: Electric Cyan / Neon Aqua hsl(185, 100%, 50%) = #00F0FF */
-    --primary: 185 100% 50%;
-    --primary-foreground: 222 47% 6%;
-    /* Secondary: Deep Violet / Cyber Purple hsl(270, 100%, 60%) = #9D00FF */
-    --secondary: 270 100% 60%;
-    --secondary-foreground: 200 15% 96%;
-    --muted: 222 30% 12%;
-    --muted-foreground: 215 15% 52%;
-    --accent: 222 30% 12%;
-    --accent-foreground: 200 15% 96%;
-    --destructive: 0 72% 58%;
-    --destructive-foreground: 200 15% 96%;
-    --border: 222 25% 14%;
-    --input: 222 25% 14%;
-    --ring: 185 100% 50%;
-    --radius: 0.75rem;
+    /* Background: Pure Clean White / Soft Slate Tint */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    /* Primary: Electric Cobalt / Vibrant Blue hsl(221, 83%, 53%) = #2563EB */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    /* Secondary: Royal Purple / Indigo hsl(262, 83%, 58%) = #7C3AED */
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+    --radius: 0.85rem;
   }
 
   * {
@@ -45,75 +45,67 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    background-color: #F8FAFC;
     background-image:
-      radial-gradient(ellipse at 15% 40%, hsl(185 100% 10% / 0.20) 0%, transparent 60%),
-      radial-gradient(ellipse at 85% 15%, hsl(270 100% 15% / 0.16) 0%, transparent 60%),
-      radial-gradient(ellipse at 50% 90%, hsl(185 80% 8% / 0.14) 0%, transparent 60%),
-      radial-gradient(ellipse at 60% 50%, hsl(270 60% 10% / 0.08) 0%, transparent 50%);
+      radial-gradient(ellipse at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 90% 10%, rgba(124, 58, 237, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 60%);
     background-attachment: fixed;
     min-height: 100vh;
   }
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+    background: #F1F5F9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(185 100% 50% / 0.3);
-    border-radius: 3px;
+    background: #CBD5E1;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(185 100% 50% / 0.6);
+    background: #94A3B8;
   }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────────
-   Component Classes
+   Component Classes — Clean Modern Light UI
    ────────────────────────────────────────────────────────────────────────────── */
 
 @layer components {
-  /* Glass card */
+  /* Clean White Glass Card */
   .glass-card {
-    @apply relative overflow-hidden rounded-xl border border-white/[0.06];
-    background: linear-gradient(
-      135deg,
-      rgba(0, 240, 255, 0.03) 0%,
-      rgba(255, 255, 255, 0.02) 50%,
-      rgba(157, 0, 255, 0.02) 100%
-    );
-    backdrop-filter: blur(20px);
+    @apply relative overflow-hidden rounded-2xl border border-slate-200/80;
+    background: #FFFFFF;
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(0, 240, 255, 0.06);
-    transition: all 0.3s ease;
+      0 4px 20px -2px rgba(15, 23, 42, 0.05),
+      0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .glass-card:hover {
-    border-color: hsl(185 100% 50% / 0.18);
+    border-color: rgba(37, 99, 235, 0.25);
     box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.6),
-      0 0 25px hsl(185 100% 50% / 0.08),
-      0 0 60px hsl(270 100% 60% / 0.04),
-      inset 0 1px 0 rgba(0, 240, 255, 0.1);
+      0 12px 30px -4px rgba(37, 99, 235, 0.08),
+      0 4px 12px -2px rgba(15, 23, 42, 0.04);
     transform: translateY(-2px);
   }
 
-  /* Gradient text — Electric Cyan → Deep Violet */
+  /* Gradient Text — Electric Blue → Royal Purple */
   .gradient-text {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(
       135deg,
-      hsl(185, 100%, 55%) 0%,
-      hsl(210, 100%, 65%) 40%,
-      hsl(270, 100%, 65%) 100%
+      #1D4ED8 0%,
+      #2563EB 40%,
+      #7C3AED 100%
     );
   }
 
@@ -121,40 +113,38 @@
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(
       135deg,
-      hsl(185, 100%, 60%) 0%,
-      hsl(200, 95%, 60%) 100%
+      #2563EB 0%,
+      #0284C7 100%
     );
   }
 
-  /* Neon gradient background — used for icon containers, CTAs */
+  /* Stellar Gradient — Vibrant Blue/Indigo */
   .bg-stellar-gradient {
-    background: linear-gradient(135deg, hsl(185, 100%, 40%) 0%, hsl(270, 100%, 55%) 100%);
+    background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
   }
 
-  /* Neon button — Electric Cyan / Deep Violet */
+  /* Vibrant Clean Button */
   .btn-stellar {
-    @apply relative inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm;
-    background: linear-gradient(135deg, hsl(185, 100%, 40%) 0%, hsl(210, 100%, 50%) 50%, hsl(270, 100%, 55%) 100%);
-    color: hsl(222, 47%, 6%);
-    box-shadow: 0 0 20px hsl(185 100% 50% / 0.3);
-    transition: all 0.3s ease;
+    @apply relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white;
+    background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+    transition: all 0.25s ease;
     overflow: hidden;
   }
 
   .btn-stellar::before {
     content: '';
     @apply absolute inset-0;
-    background: radial-gradient(circle at center, hsl(185 100% 70% / 0.4) 0%, transparent 70%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
   }
 
   .btn-stellar:hover {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px);
     box-shadow:
-      0 0 30px hsl(185 100% 50% / 0.5),
-      0 0 60px hsl(270 100% 60% / 0.2),
-      0 4px 15px rgba(0, 0, 0, 0.4);
+      0 8px 22px rgba(37, 99, 235, 0.38),
+      0 2px 6px rgba(15, 23, 42, 0.1);
   }
 
   .btn-stellar:hover::before {
@@ -172,114 +162,109 @@
     box-shadow: none;
   }
 
-  /* Ghost button */
+  /* Ghost Button */
   .btn-ghost {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm;
-    @apply border border-white/10 text-foreground/80;
-    background: rgba(0, 240, 255, 0.03);
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm;
+    @apply border border-slate-200 bg-white text-slate-700;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     transition: all 0.2s ease;
   }
 
   .btn-ghost:hover {
-    background: rgba(0, 240, 255, 0.07);
-    border-color: hsl(185 100% 50% / 0.35);
-    color: hsl(185, 100%, 80%);
+    background: #F8FAFC;
+    border-color: rgba(37, 99, 235, 0.3);
+    color: #1E40AF;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
   }
 
-  /* Status badges */
+  /* Status Badges */
   .badge {
     @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
   }
 
   .badge-success {
     @apply badge;
-    background: hsl(185, 80%, 7%);
-    color: hsl(185, 100%, 60%);
-    border: 1px solid hsl(185, 70%, 18%);
+    background: #F0FDF4;
+    color: #166534;
+    border: 1px solid #BBF7D0;
   }
 
   .badge-pending {
     @apply badge;
-    background: hsl(270, 50%, 10%);
-    color: hsl(270, 100%, 75%);
-    border: 1px solid hsl(270, 60%, 25%);
+    background: #FFFBEB;
+    color: #B45309;
+    border: 1px solid #FDE68A;
   }
 
   .badge-error {
     @apply badge;
-    background: hsl(0, 72%, 10%);
-    color: hsl(0, 80%, 65%);
-    border: 1px solid hsl(0, 60%, 25%);
+    background: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
   }
 
-  /* Streaming Live badge — Electric Cyan pulse */
+  /* Streaming Live badge */
   .badge-active {
     @apply badge;
-    background: hsl(185, 80%, 7%);
-    color: hsl(185, 100%, 60%);
-    border: 1px solid hsl(185, 70%, 18%);
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
   }
 
-  /* Streaming Live with animation */
   .badge-streaming {
     @apply badge;
-    background: hsl(185, 80%, 7%);
-    color: hsl(185, 100%, 65%);
-    border: 1px solid hsl(185, 80%, 22%);
-    box-shadow: 0 0 10px hsl(185 100% 50% / 0.15);
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #93C5FD;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
     animation: stream-glow 2s ease-in-out infinite;
   }
 
-  /* Completed badge — green */
   .badge-completed {
     @apply badge;
-    background: hsl(140, 60%, 7%);
-    color: hsl(140, 80%, 55%);
-    border: 1px solid hsl(140, 60%, 20%);
+    background: #F0FDF4;
+    color: #15803D;
+    border: 1px solid #86EFAC;
   }
 
-  /* Cancelled / expired badge */
   .badge-cancelled {
     @apply badge;
-    background: hsl(0, 20%, 10%);
-    color: hsl(0, 40%, 60%);
-    border: 1px solid hsl(0, 30%, 22%);
+    background: #FEF2F2;
+    color: #B91C1C;
+    border: 1px solid #FCA5A5;
   }
 
   .badge-expired {
     @apply badge;
-    background: hsl(0, 20%, 12%);
-    color: hsl(0, 20%, 55%);
-    border: 1px solid hsl(0, 20%, 25%);
+    background: #F8FAFC;
+    color: #64748B;
+    border: 1px solid #E2E8F0;
   }
 
-  /* Input */
+  /* Clean Input */
   .input-stellar {
-    @apply w-full px-4 py-3 rounded-lg text-sm;
-    @apply border border-white/10 bg-white/[0.03];
-    @apply text-foreground placeholder:text-muted-foreground;
+    @apply w-full px-4 py-3 rounded-xl text-sm;
+    @apply border border-slate-200 bg-white;
+    @apply text-slate-900 placeholder:text-slate-400;
     @apply outline-none transition-all;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
   }
 
   .input-stellar:focus {
-    border-color: hsl(185 100% 50% / 0.5);
-    box-shadow: 0 0 0 3px hsl(185 100% 50% / 0.08), 0 0 15px hsl(185 100% 50% / 0.05);
+    border-color: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
   }
 
-  /* Stream progress bar — animated flow */
+  /* Stream Progress Bar */
   .progress-bar {
-    @apply w-full h-2 rounded-full bg-muted overflow-hidden;
+    @apply w-full h-2.5 rounded-full bg-slate-100 overflow-hidden;
     position: relative;
   }
 
   .progress-fill {
     @apply h-full rounded-full transition-all duration-700;
-    background: linear-gradient(90deg,
-      hsl(185, 100%, 45%) 0%,
-      hsl(210, 100%, 60%) 50%,
-      hsl(270, 100%, 60%) 100%
-    );
-    box-shadow: 0 0 12px hsl(185 100% 50% / 0.6), 0 0 30px hsl(270 100% 60% / 0.2);
+    background: linear-gradient(90deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
     position: relative;
     overflow: hidden;
   }
@@ -288,26 +273,26 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: stream-shimmer 2s linear infinite;
   }
 
-  /* Live ticking stream counter */
+  /* Live Ticking Stream Counter */
   .stream-counter {
     font-family: 'Fira Code', monospace;
-    color: hsl(185, 100%, 65%);
-    text-shadow: 0 0 10px hsl(185 100% 50% / 0.5);
+    color: #1D4ED8;
+    text-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
     animation: tick-glow 1s ease-in-out infinite;
   }
 
-  /* Stream flow bar — horizontal animated gradient */
+  /* Stream Flow Bar */
   .stream-bar {
     height: 2px;
     background: linear-gradient(90deg,
       transparent 0%,
-      hsl(185, 100%, 50%) 30%,
-      hsl(270, 100%, 60%) 70%,
+      #2563EB 30%,
+      #7C3AED 70%,
       transparent 100%
     );
     background-size: 200% 100%;
@@ -315,85 +300,87 @@
     border-radius: 1px;
   }
 
-  /* Skeleton loader */
+  /* Skeleton Loader */
   .skeleton {
-    @apply rounded-lg bg-muted/50;
+    @apply rounded-xl bg-slate-200/60;
     background: linear-gradient(
       90deg,
-      hsl(222 30% 10%) 25%,
-      hsl(222 30% 14%) 50%,
-      hsl(222 30% 10%) 75%
+      #E2E8F0 25%,
+      #F1F5F9 50%,
+      #E2E8F0 75%
     );
     background-size: 200% 100%;
     animation: shimmer 2s infinite linear;
   }
 
-  /* Nav item */
+  /* Nav Item */
   .nav-item {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium;
-    @apply text-muted-foreground transition-all duration-200;
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium;
+    @apply text-slate-600 transition-all duration-200;
   }
 
   .nav-item:hover {
-    @apply bg-white/[0.05] text-foreground;
+    @apply bg-slate-100 text-slate-900;
   }
 
   .nav-item.active {
-    color: hsl(var(--primary));
-    background: hsl(185 100% 50% / 0.07);
-    border: 1px solid hsl(185 100% 50% / 0.15);
+    color: #2563EB;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
   }
 
-  /* Address display */
+  /* Address Display */
   .address-display {
-    @apply font-mono text-xs px-3 py-1.5 rounded-md;
-    background: rgba(0, 240, 255, 0.04);
-    border: 1px solid rgba(0, 240, 255, 0.08);
+    @apply font-mono text-xs px-3 py-1.5 rounded-lg;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    color: #334155;
   }
 
-  /* Stat card */
+  /* Stat Card */
   .stat-card {
     @apply glass-card p-6 flex flex-col gap-2;
   }
 
-  /* Event card */
+  /* Event Card */
   .event-card {
     @apply flex items-start gap-4 p-4 rounded-xl;
-    background: rgba(0, 240, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
     transition: all 0.2s ease;
   }
 
   .event-card:hover {
-    background: rgba(0, 240, 255, 0.04);
-    border-color: hsl(185 100% 50% / 0.12);
+    background: #F8FAFC;
+    border-color: rgba(37, 99, 235, 0.2);
   }
 
-  /* Dot indicator */
+  /* Dot Indicator */
   .dot-active {
-    @apply w-2 h-2 rounded-full;
-    background: hsl(185, 100%, 55%);
-    box-shadow: 0 0 8px hsl(185 100% 55% / 0.8), 0 0 20px hsl(185 100% 50% / 0.4);
+    @apply w-2.5 h-2.5 rounded-full;
+    background: #2563EB;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
     animation: pulse 2s ease-in-out infinite;
   }
 
   .dot-pending {
-    @apply w-2 h-2 rounded-full bg-amber-400;
-    box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+    @apply w-2.5 h-2.5 rounded-full bg-amber-500;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
     animation: pulse 2s ease-in-out infinite;
   }
 
   .dot-error {
-    @apply w-2 h-2 rounded-full bg-red-400;
+    @apply w-2.5 h-2.5 rounded-full bg-red-500;
   }
 
-  /* Neon glow border on hover */
+  /* Hover Border */
   .neon-border-hover {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .neon-border-hover:hover {
-    border-color: hsl(185 100% 50% / 0.4);
-    box-shadow: 0 0 20px hsl(185 100% 50% / 0.12), 0 0 40px hsl(270 100% 60% / 0.06);
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
   }
 }
 
@@ -433,19 +420,19 @@
 
 @keyframes stream-glow {
   0%, 100% {
-    box-shadow: 0 0 8px hsl(185 100% 50% / 0.2);
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.15);
   }
   50% {
-    box-shadow: 0 0 16px hsl(185 100% 50% / 0.45), 0 0 30px hsl(185 100% 50% / 0.15);
+    box-shadow: 0 0 16px rgba(37, 99, 235, 0.35);
   }
 }
 
 @keyframes tick-glow {
   0%, 100% {
-    text-shadow: 0 0 8px hsl(185 100% 50% / 0.4);
+    text-shadow: 0 0 4px rgba(37, 99, 235, 0.2);
   }
   50% {
-    text-shadow: 0 0 16px hsl(185 100% 50% / 0.8), 0 0 30px hsl(185 100% 50% / 0.3);
+    text-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
   }
 }
 
