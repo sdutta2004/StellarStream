@@ -75,37 +75,37 @@ describe('CampaignCard', () => {
 
   it('displays correct progress percentage for Active campaign', () => {
     render(<CampaignCard campaign={makeCampaign({ progressPercent: 47.5 })} />);
-    expect(screen.getByText('47.5% escrowed')).toBeInTheDocument();
+    expect(screen.getByText('47.5% vested')).toBeInTheDocument();
   });
 
-  it('shows "Open" badge for an active campaign', () => {
+  it('shows "Streaming Live" badge for an active live campaign', () => {
     render(<CampaignCard campaign={makeCampaign({ status: 'Active' })} />);
-    expect(screen.getByText('Open')).toBeInTheDocument();
+    expect(screen.getByText('Streaming Live')).toBeInTheDocument();
   });
 
-  it('shows "Locked / Funded" badge for a successful campaign', () => {
+  it('shows "Vault Reached" badge for a successful campaign', () => {
     render(
       <CampaignCard
         campaign={makeCampaign({ status: 'Successful', progressPercent: 100 })}
       />
     );
-    expect(screen.getByText('Locked / Funded')).toBeInTheDocument();
+    expect(screen.getByText('Vault Reached')).toBeInTheDocument();
   });
 
-  it('shows "Expired / Closed" badge for an expired campaign', () => {
+  it('shows "Cancelled" badge for an expired campaign', () => {
     render(
       <CampaignCard
         campaign={makeCampaign({ status: 'Expired', isExpired: true, daysLeft: 0 })}
       />
     );
-    expect(screen.getByText('Expired / Closed')).toBeInTheDocument();
+    expect(screen.getByText('Cancelled')).toBeInTheDocument();
   });
 
-  it('shows "Paid Out" badge for a withdrawn campaign', () => {
+  it('shows "Completed" badge for a withdrawn campaign', () => {
     render(
       <CampaignCard campaign={makeCampaign({ status: 'Withdrawn', progressPercent: 100 })} />
     );
-    expect(screen.getByText('Paid Out')).toBeInTheDocument();
+    expect(screen.getByText('Completed')).toBeInTheDocument();
   });
 
   it('has a role="button" for accessibility', () => {
@@ -115,7 +115,7 @@ describe('CampaignCard', () => {
 
   it('renders a shortened creator address', () => {
     render(<CampaignCard campaign={makeCampaign()} />);
-    // shortAddress with 4 chars = "GDOJ...ARXG" – just check first 4 chars appear
+    // shortAddress with 4 chars = "GDOJ...3ARX" – check first 4 chars appear
     const container = screen.getByRole('button');
     expect(container.textContent).toContain('GDOJ');
   });

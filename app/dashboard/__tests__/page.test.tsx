@@ -52,10 +52,10 @@ vi.mock('@/lib/stellar/config', () => ({
     rpcUrl: 'https://soroban-testnet.stellar.org',
     networkPassphrase: 'Test SDF Network ; September 2015',
     horizonUrl: 'https://horizon-testnet.stellar.org',
-    contractId: 'CD6P3Z3FYISWUHBJ2PZYBUW7FYPGCTUTNBTHVE3T4XJ3KKMLKWF4CKPY',
-    rewardTokenId: '',
+    contractId: 'CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ',
+    rewardTokenId: 'CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M',
   },
-  DEPLOYER_ADDRESS: 'GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX',
+  DEPLOYER_ADDRESS: 'GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO',
 }));
 
 // Mock next/navigation
@@ -98,22 +98,22 @@ describe('Dashboard Page', () => {
 
   it('does NOT show wallet address when disconnected', () => {
     render(<DashboardPage />);
-    expect(screen.queryByText(/GDOJI/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/GBVLC/)).not.toBeInTheDocument();
   });
 
   it('shows wallet address input when connected', () => {
     mockWalletStore.isConnected = true;
-    mockWalletStore.address = 'GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX';
+    mockWalletStore.address = 'GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO';
     mockWalletStore.balance = '1234.5678';
     render(<DashboardPage />);
     expect(
-      screen.getByText('GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX')
+      screen.getByText('GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO')
     ).toBeInTheDocument();
   });
 
   it('shows the XLM balance when connected', () => {
     mockWalletStore.isConnected = true;
-    mockWalletStore.address = 'GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX';
+    mockWalletStore.address = 'GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO';
     mockWalletStore.balance = '9999.1234';
     render(<DashboardPage />);
     // Balance is shown as parseFloat(balance).toFixed(4)
@@ -129,9 +129,9 @@ describe('Dashboard Page', () => {
 
   it('shows "Recent Transactions" section when connected with no transactions', () => {
     mockWalletStore.isConnected = true;
-    mockWalletStore.address = 'GDOJIEIHOEUCXZMHGVZOA2V2WZMP7QVXAV42M76QNDKQYEPJDO7V3ARX';
+    mockWalletStore.address = 'GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO';
     render(<DashboardPage />);
     expect(screen.getByText('Recent Transactions')).toBeInTheDocument();
-    expect(screen.getByText(/No transactions yet/i)).toBeInTheDocument();
+    expect(screen.getByText(/No transactions recorded yet/i)).toBeInTheDocument();
   });
 });
