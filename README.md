@@ -61,13 +61,14 @@ Stream Sender (Employer)
 
 | Contract | Address |
 |---|---|
-| **Contract ID** | *(set by deploy.js)* |
-| **STRM Token Contract ID** | *(set by deploy.js)* |
-| **Deployer Wallet Address** | `GBJ2JX6FPAW3E6ZCSGKDRXDGCMJJWRSYQCJLZ7APX2ICKIYWAMDON7QF` |
+| **StellarStream Contract ID** | `CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ` |
+| **STRM Token Contract ID** | `CBLCBZNJBLS3SSMVZUAPIK53QOCPOYXMJPMS3L7TZSFH7SGKRWEGM66M` |
+| **Deployer Wallet Address** | `GBVLCPD3N67ZMJ7KEMN577ZJLNZLPD77VWYLTYO56QPXUPH7V4B4CMZO` |
+| **Freighter Wallet (Default)** | `GBJ2JX6FPAW3E6ZCSGKDRXDGCMJJWRSYQCJLZ7APX2ICKIYWAMDON7QF` |
 | **Native XLM Asset** | `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC` |
 | **Network** | Stellar Testnet |
 
-[View Contract on Stellar Expert](https://stellar.expert/explorer/testnet)
+[View Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ)
 
 ---
 
