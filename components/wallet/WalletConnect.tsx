@@ -145,14 +145,14 @@ export function WalletConnect() {
             {/* Actions */}
             <div className="px-2 py-2 space-y-1 bg-white">
               <a
-                href={address ? explorerAccountUrl(address) : explorerContractUrl(STELLAR_CONFIG.contractId)}
+                href={explorerContractUrl(STELLAR_CONFIG.contractId)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 w-full px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors"
                 onClick={() => setShowDropdown(false)}
               >
                 <ExternalLink className="w-4 h-4 text-slate-400" />
-                View on Explorer
+                View Contract on Explorer
               </a>
 
               <button
