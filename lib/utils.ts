@@ -147,8 +147,8 @@ export function explorerContractUrl(contractId?: string, network: "testnet" | "m
   const base = network === "mainnet"
     ? "https://stellar.expert/explorer/public"
     : "https://stellar.expert/explorer/testnet";
-  if (!contractId) return base;
-  return `${base}/contract/${contractId}`;
+  const id = (contractId && contractId.trim()) ? contractId.trim() : "CBWUQRGPLGVWNXSUNO7GGET4RMWQBYQRGGJFLLBUHTG6JYN3LUZOSCHQ";
+  return `${base}/contract/${id}`;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
