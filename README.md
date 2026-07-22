@@ -25,6 +25,20 @@
 
 ---
 
+## 📸 Screenshots & Preview
+
+<div align="center">
+
+### 📊 StellarStream Dashboard & Stream Interface
+![StellarStream Dashboard](photos/dashboard.png)
+
+### 🔍 Stellar Expert Contract Explorer
+![Stellar Expert Explorer](photos/steller-expert.png)
+
+</div>
+
+---
+
 ## 🌊 What is StellarStream?
 
 StellarStream is a decentralized real-time XLM payment streaming and salary vesting protocol built on **Stellar Soroban smart contracts**. Instead of lump-sum payments, funds vest continuously per second — giving recipients transparent, trustless, and cancelable access to earnings.
